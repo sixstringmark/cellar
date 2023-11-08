@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vinyl Vortex Psychedelic Cellar</title>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+
+		<link rel="stylesheet" type="text/css" href="css/html5audio_playlist_selector.css" />
+
+        <script type="text/javascript" src="js/swfobject.js"></script><!-- flash backup -->
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script><!-- jquery ui sortable/draggable -->
+        <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script><!-- mobile drag/sort -->
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script><!-- scroll in playlist -->
+        <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script><!-- scroll in playlist -->
+        <script type="text/javascript" src="js/jquery.selectbox-0.2.js"></script><!-- playlist selector dropdown -->
+        <script type="text/javascript" src="js/id3-minimized.js"></script><!-- id3 tags -->
+        <script type="text/javascript" src="js/jquery.html5audio.min.js"></script>
+        <script type="text/javascript" src="js/jquery.html5audio.func.js"></script>
+        <script type="text/javascript" src="js/vortext_playlist_selector.js"></script>
+
+
+	<link rel="stylesheet" href="css/vv.css">
+
+	<script type="text/javascript">
+		function showMe(ii) {
+			var tg = $(ii);
+			tg.toggle(150);
+			pp = tg.find(".xplaylist");
+			//alert(pp);
+			$(pp[0]).scrollTop(0);
+		}
+		function hideMe(ii) {
+			var tg = $(ii);
+			tg.toggle(150);
+		}
+		function loadMe() {
+
+		}
+
+	</script>
+</head>
+
+<body onload="loadMe()">
+	<div id="container">
+		<div class="ps_banner">
+			<div class="ps_logo">
+			<div class="ps_logo_text">Psychedelic Cellar</div>
+				<img src="hdr_home.png"/>
+			</div>
+			<div class="ps_links">
+				<a class="link45" href="index.html">Home</a>
+				<a class="link45" href="links.html">Links</a>
+				<a class="link45" href="about.html">About</a>
+			</div>
+		</div>
+		
+		
+		<div class="ps_headers">
+			<div class="ps_header1">
+				This is the home of the Vinyl Vortex Psychedelic Cellar internet radio show.
+				Streaming is absolutely free with no registration required.
+				Shows are divided into parts roughly one hour long.  To stream a show part,
+				press the button for the show 
+				then press the "Play" button in the part
+				heading in the contents. 
+			</div>
+			<div class="ps_header2">
+				This site features the music of the creative explosion of the psychedelic
+				era of the later sixties and early seventies.  You'll hear a
+				a variety of music - rock, folk, jazz, classical, and roots music, 
+				along some music that is beyond category. The mix includes some of 
+				the best known music of the era, along with some rare and obscure 
+				songs. The presentation is in the style of the "underground" FM 
+				radio stations of the time, with spoken information about the artist,
+				title, album, year, and some background information about the music
+				being played.				
+			</div>
+		</div>
+		
+		
+		<div class="wrapper">
+			<div class="content">
+			</div><!-- content -->
+
+       <div id="componentWrapper">
+
+       		 <div class="playerHolder">
+
+            	  <!-- song name -->
+                  <div class="player_mediaName_Mask">
+                 	  <div class="player_mediaName"></div>
+                  </div>
+
+                  <!-- song time -->
+                  <div class="player_mediaTime">
+                  	  <div class="player_mediaTime_current">0:00</div><div class="player_mediaTime_total">0:00</div>
+                  </div>
+
+                  <div class="player_controls">
+                  	  <!-- previous -->
+                      <div class="controls_prev"><img src='media/data/icons/set1/prev.png' alt='controls_prev'/></div>
+                      <!-- pause/play -->
+                      <div class="controls_toggle"><img src='media/data/icons/set1/play.png' alt='controls_toggle'/></div>
+                      <!-- next -->
+                      <div class="controls_next"><img src='media/data/icons/set1/next.png' alt='controls_next'/></div>
+
+                 	  <!-- volume -->
+                      <div class="player_volume"><img src='media/data/icons/set1/volume.png' alt='player_volume'/></div>
+                      <div class="volume_seekbar">
+                         <div class="volume_bg"></div>
+                         <div class="volume_level"></div>
+                         <!-- volume tooltip -->
+                  		 <div class="player_volume_tooltip"><p></p></div>
+                      </div>
+
+                      <!-- loop -->
+                      <div class="player_loop"><img src='media/data/icons/set1/loop.png' alt='player_loop'/></div>
+                      <!-- shuffle -->
+                      <div class="player_shuffle"><img src='media/data/icons/set1/shuffle.png' alt='player_shuffle'/></div>
+                      <!-- download -->
+                      <div class="player_download"><img src='media/data/icons/set1/download.png' alt="player_download"/></div>
+                  </div>
+
+                  <!-- progress -->
+                  <div class="player_progress">
+                      <div class="progress_bg"></div>
+                      <div class="load_progress"></div>
+                      <div class="play_progress"></div>
+                      <!-- progress tooltip -->
+                  	  <div class="player_progress_tooltip"><p></p></div>
+                  </div>
+
+             </div>
+
+             <div class="playlistHolder">
+                 <div class="componentPlaylist">
+                     <div class="playlist_inner">
+                     	<!-- playlist items are appended here! -->
+                     </div>
+                 </div>
+                 <!-- preloader -->
+                 <div class="preloader"></div>
+             </div>
+
+        </div>
+
+			<div class="details">
+				<ul>
+				<li>
+					<div>Available Shows</div>
+					<div class="show_list">
+						<button onclick='showMe("#C01-1");'>Show #1</button>
+						<button onclick='showMe("#C02-1");'>Show #2</button>
+						<button onclick='showMe("#C03-1");'>Show #3</button>
+						<button onclick='showMe("#C04-1");'>Show #4</button>
+						<button onclick='showMe("#C05-1");'>Show #5</button>
+						<button onclick='showMe("#C06-1");'>Show #6</button>
+						<button onclick='showMe("#C07-1");'>Show #7</button>
+						<button onclick='showMe("#C08-1");'>Show #8</button>
+						<button onclick='showMe("#C09-1");'>Show #9</button>
+					</div>
+					<ul>
+						<li class="play">
+
+						</li>
+					</ul>
+<div class="playlist_contents" id="C01-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #1 Contents</span> <a href="#" onclick='hideMe("#C01-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[0]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-1-1 intro</div><div class="time">0:34	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Fresh Cream </div><div class="year">1966</div><div class="title">I Feel Free</div><div class="time">2:53	</div></div>
+<div class="entry"><div class="artist">The Leaves </div><div class="album">Hey Joe</div><div class="year">1964</div><div class="title">Dr. Stone</div><div class="time">2:23	</div></div>
+<div class="entry"><div class="artist">The Yardbirds</div><div class="album">Roger the Engineer</div><div class="year">2001</div><div class="title">Turn into Earth</div><div class="time">3:12	</div></div>
+<div class="entry"><div class="artist">The Lemon Dips</div><div class="album">Who's Gonna Buy?</div><div class="year">1969</div><div class="title">Winter Song</div><div class="time">3:40	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-1-2 recap</div><div class="time">0:30	</div></div>
+<div class="entry"><div class="artist">Can</div><div class="album">Ege Bamyasi</div><div class="year">1972</div><div class="title">Sing Swan Song</div><div class="time">4:49	</div></div>
+<div class="entry"><div class="artist">The Graham Bond Organisation</div><div class="album">The Sound Of 65 </div><div class="year">1965</div><div class="title">Early In The Morning</div><div class="time">1:51	</div></div>
+<div class="entry"><div class="artist">Jefferson Airplane</div><div class="album">Surrealistic Pillow</div><div class="year">1967</div><div class="title">3/5 of a Mile in 10 Seconds</div><div class="time">3:42	</div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers Of Invention</div><div class="album">Freak Out!</div><div class="year">1966</div><div class="title">Help, I'm A Rock</div><div class="time">4:43	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-1-3 recap</div><div class="time">1:04	</div></div>
+<div class="entry"><div class="artist">Ten Years After</div><div class="album">Ssssh</div><div class="year">1969</div><div class="title">I Woke Up This Morning</div><div class="time">5:26	</div></div>
+<div class="entry"><div class="artist">Doc Watson</div><div class="album">Ballads From Deep Gap</div><div class="year"></div><div class="title">The Cuckoo</div><div class="time">2:51	</div></div>
+<div class="entry"><div class="artist">Traffic</div><div class="album">Traffic</div><div class="year">1968</div><div class="title">Forty Thousand Headmen</div><div class="time">3:15	</div></div>
+<div class="entry"><div class="artist">Sweetwater</div><div class="album">Sweetwater</div><div class="year">1968</div><div class="title">My Crystal Spider</div><div class="time">3:54	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-1-4 recap - Aorta side 1</div><div class="time">1:00	</div></div>
+<div class="entry"><div class="artist">Aorta</div><div class="album">Aorta</div><div class="year">1968</div><div class="title">Main Vein</div><div class="time">2:23	</div></div>
+<div class="entry"><div class="artist">Aorta</div><div class="album">Aorta</div><div class="year">1968</div><div class="title">Heart Attack</div><div class="time">2:36	</div></div>
+<div class="entry"><div class="artist">Aorta</div><div class="album">Aorta</div><div class="year">1968</div><div class="title">What's In My Mind's Eye</div><div class="time">2:53	</div></div>
+<div class="entry"><div class="artist">Aorta</div><div class="album">Aorta</div><div class="year">1968</div><div class="title">Magic Bed</div><div class="time">2:42	</div></div>
+<div class="entry"><div class="artist">Aorta</div><div class="album">Aorta</div><div class="year">1968</div><div class="title">Main Vein II</div><div class="time">1:29	</div></div>
+<div class="entry"><div class="artist">Aorta</div><div class="album">Aorta</div><div class="year">1968</div><div class="title">Sleep Tight</div><div class="time">4:44	</div></div>
+<div class="entry"><div class="artist">Aorta</div><div class="album">Aorta</div><div class="year">1968</div><div class="title">Catalyptic</div><div class="time">3:45	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-1-5 Aorta side 1 recap - set intro</div><div class="time">0:39	</div></div>
+<div class="entry"><div class="artist">The Zodiac</div><div class="album">Cosmic Sounds</div><div class="year">1967</div><div class="title">10. Capricorn - The Uncapricious Climber</div><div class="time">3:33	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">Sgt. Pepper's Lonely Hearts Club Band</div><div class="year">1967</div><div class="title">Being For The Benefit Of Mr.Kite !</div><div class="time">2:37	</div></div>
+<div class="entry"><div class="artist">Chad & Jeremy</div><div class="album">The Ark</div><div class="year">2009</div><div class="title">Pantheistic Study For Guitar And Large Bird</div><div class="time">3:36	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-1-6 recap wrap-up</div><div class="time">0:32	</div></div>
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[1]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-2-1 intro</div><div class="time">0:29	</div></div>
+<div class="entry"><div class="artist">Big Brother & The Holding Company</div><div class="album">Cheap Thrills</div><div class="year">1968</div><div class="title">Oh, Sweet Mary</div><div class="time">4:16	</div></div>
+<div class="entry"><div class="artist">Albert King</div><div class="album">Years Gone By</div><div class="year">1969</div><div class="title">Drowning On Dry Land</div><div class="time">3:58	</div></div>
+<div class="entry"><div class="artist">The Animals</div><div class="album">Animalisms</div><div class="year">2000</div><div class="title">Clapping</div><div class="time">1:21	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="album">Led Zeppelin I</div><div class="year">1969</div><div class="title">Good Times Bad Times</div><div class="time">2:46	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-2-2 recap</div><div class="time">1:06	</div></div>
+<div class="entry"><div class="artist">The Id</div><div class="album">The Inner Sounds Of The ID</div><div class="year">1967</div><div class="title">Short Circuit</div><div class="time">2:57	</div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers</div><div class="album">We're Only In It For The Money</div><div class="year">1986</div><div class="title">What's The Ugliest Part Of Your Body [Reprise]</div><div class="time">0:57	</div></div>
+<div class="entry"><div class="artist">Hurdy Gurdy</div><div class="album">Hurdy Gurdy</div><div class="year">1971</div><div class="title">Babel's Tower</div><div class="time">3:17	</div></div>
+<div class="entry"><div class="artist">Nico</div><div class="album">Chelsea Girl</div><div class="year">1968</div><div class="title">Little Sister</div><div class="time">4:26	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-2-3 recap</div><div class="time">0:39	</div></div>
+<div class="entry"><div class="artist">Young Flowers</div><div class="album">No. 2</div><div class="year">1969</div><div class="title">Slow Down Driver</div><div class="time">5:28	</div></div>
+<div class="entry"><div class="artist">Spirit</div><div class="album">The Family That Plays Together</div><div class="year">1968</div><div class="title">It's All The Same</div><div class="time">4:43	</div></div>
+<div class="entry"><div class="artist">Bobak, Jons, Malone</div><div class="album">Motherlight</div><div class="year">1969</div><div class="title">Burning The Weed</div><div class="time">3:24	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-2-4 recap</div><div class="time">0:33	</div></div>
+<div class="entry"><div class="artist">Blue Cheer</div><div class="album">Vincebus Eruptum</div><div class="year">1968</div><div class="title">Parchment Farm</div><div class="time">5:50	</div></div>
+<div class="entry"><div class="artist">Grateful Dead</div><div class="album">American Beauty</div><div class="year">1970</div><div class="title">Ripple</div><div class="time">4:10	</div></div>
+<div class="entry"><div class="artist">Rhinoceros</div><div class="album">Rhinoceros</div><div class="year">1968</div><div class="title">Apricot Brandy</div><div class="time">1:58	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-2-5 recap</div><div class="time">0:41	</div></div>
+<div class="entry"><div class="artist">Moondog</div><div class="album">Moondog</div><div class="year">1956</div><div class="title">Drum Suite</div><div class="time">2:18	</div></div>
+<div class="entry"><div class="artist">Sam Gopal</div><div class="album">Escalator</div><div class="year">1969</div><div class="title">Escalator</div><div class="time">2:50	</div></div>
+<div class="entry"><div class="artist">Alice Coltrane</div><div class="album">Journey in Satchidananda</div><div class="year">1971</div><div class="title">Stopover Bombay</div><div class="time">2:54	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-2-6 recap</div><div class="time">0:49	</div></div>
+<div class="entry"><div class="artist">Charley Musselwhite</div><div class="album">Stand Back! Here Comes Charley Musselwhite's South Side Band</div><div class="year">1967</div><div class="title">Cristo Redemptor</div><div class="time">3:21	</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">The Piper At The Gates Of Dawn</div><div class="year">1967</div><div class="title">Take Up Thy Stethoscope And Walk</div><div class="time">3:06	</div></div>
+<div class="entry"><div class="artist">Julian's Treatment</div><div class="album">A Time Before This</div><div class="year">1970</div><div class="title">10th Chapter: Fourth From The Sun</div><div class="time">2:48	</div></div>
+<div class="entry"><div class="artist">The Doors</div><div class="album">L. A. Woman</div><div class="year">1970</div><div class="title">Crawling King Snake</div><div class="time">5:01	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-2-7 recap and part 2 wrap-up</div><div class="time">0:38	</div></div>
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[2]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-3-1 welcome</div><div class="time">0:33	</div></div>
+<div class="entry"><div class="artist">Ultimate Spinach</div><div class="album">Ultimate Spinach</div><div class="year">1967</div><div class="title">BAROQUE #1</div><div class="time">4:49	</div></div>
+<div class="entry"><div class="artist">Walter Carlos</div><div class="album">Switched-On Bach</div><div class="year">1973</div><div class="title">Bach: 2-Part Invention In D Minor</div><div class="time">0:52	</div></div>
+<div class="entry"><div class="artist">Andrew Modla</div><div class="album">First Philadelphia Computer Music Festival</div><div class="year">1978</div><div class="title">Yankee Doodle Dandy</div><div class="time">1:26	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-3-2 recap</div><div class="time">0:39	</div></div>
+<div class="entry"><div class="artist">The Peanut Butter Conspiracy</div><div class="album">The Great Conspiracy</div><div class="year">1967</div><div class="title">Invasion Of The Poppy People</div><div class="time">0:41	</div></div>
+<div class="entry"><div class="artist">Sunforest</div><div class="album">Sound Of Sunforest</div><div class="year">1969</div><div class="title">And I Was Blue</div><div class="time">2:50	</div></div>
+<div class="entry"><div class="artist">Quicksilver Messenger Service</div><div class="album">Quicksilver Messenger Service</div><div class="year">1968</div><div class="title">Pride Of Man</div><div class="time">4:12	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-3-3 recap into Axis side 1</div><div class="time">0:51	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Axis: Bold As Love</div><div class="year">1967</div><div class="title">You Got Me Floatin'</div><div class="time">2:48	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Axis: Bold As Love</div><div class="year">1967</div><div class="title">Castles Made Of Sand</div><div class="time">2:47	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Axis: Bold As Love</div><div class="year">1967</div><div class="title">She's So Fine</div><div class="time">2:39	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Axis: Bold As Love</div><div class="year">1967</div><div class="title">One Rainy Wish</div><div class="time">3:43	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Axis: Bold As Love</div><div class="year">1967</div><div class="title">Little Miss Lover</div><div class="time">2:24	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Axis: Bold As Love</div><div class="year">1967</div><div class="title">Bold As Love</div><div class="time">4:12	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-3-4 Axis recap - intro</div><div class="time">0:33	</div></div>
+<div class="entry"><div class="artist">Captain Beefheart & The Magic Band</div><div class="album">Trout Mask Replica</div><div class="year">1970</div><div class="title">Well</div><div class="time">2:08	</div></div>
+<div class="entry"><div class="artist">The Who</div><div class="album">Tommy</div><div class="year">1969</div><div class="title">I'm Free</div><div class="time">2:40	</div></div>
+<div class="entry"><div class="artist">The United States Of America</div><div class="album">The United States Of America</div><div class="year">1968</div><div class="title">Where Is Yesterday</div><div class="time">3:08	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-3-5 recap</div><div class="time">0:27	</div></div>
+<div class="entry"><div class="artist">The Small Faces</div><div class="album">Ogdens' Nut Gone Flake</div><div class="year">1968</div><div class="title">Ogdens' Nut Gone Flake</div><div class="time">2:30	</div></div>
+<div class="entry"><div class="artist">The Move</div><div class="album">Shazam</div><div class="year">1970</div><div class="title">Beautiful Daughter</div><div class="time">2:54	</div></div>
+<div class="entry"><div class="artist">Brainticket</div><div class="album">Cottonwoodhill</div><div class="year">1970</div><div class="title">Places of Light</div><div class="time">4:03	</div></div>
+<div class="entry"><div class="artist">The West Coast Pop Art Experimental Band</div><div class="album">Part One</div><div class="year">2006</div><div class="title">1906 </div><div class="time">2:18	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-3-6 recap</div><div class="time">0:43	</div></div>
+<div class="entry"><div class="artist">The Moody Blues</div><div class="album">Days Of Future Passed</div><div class="year">1967</div><div class="title">Evening: The Sun Set : Twilight Time</div><div class="time">6:40	</div></div>
+<div class="entry"><div class="artist">Mad River</div><div class="album">Mad River</div><div class="year">1968</div><div class="title">Amphetamine Gazelle</div><div class="time">2:57	</div></div>
+<div class="entry"><div class="artist">Os Mutantes</div><div class="album">Os Mutantes</div><div class="year"></div><div class="title">Tempo no tempo</div><div class="time">1:47	</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">A Gift from a Flower to a Garden</div><div class="year">1967</div><div class="title">Wear Your Love Like Heaven</div><div class="time">2:25	</div></div>
+<div class="entry ick"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #1</div><div class="year">2018</div><div class="title">01-3-7 recap and sign-off</div><div class="time">1:00	</div></div>
+<div class="entry ick"><div class="artist">Various Artists</div><div class="album">Television's Greatest Hits Of The '50s And '60s</div><div class="year">1986</div><div class="title">Happy Trails</div><div class="time">0:59	</div></div>
+</div>
+</div>
+
+<div class="playlist_contents" id="C02-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #2 Contents</span> <a href="#" onclick='hideMe("#C02-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[3]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Fever Tree</div><div class="album">Fever Tree</div><div class="year">1968</div><div class="title">San Francisco Girls (Return Of The Native)</div><div class="time">3:41	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Are You Experienced?</div><div class="year">1967</div><div class="title">May This Be Love</div><div class="time">3:10	</div></div>
+<div class="entry"><div class="artist">Grateful Dead</div><div class="album">American Beauty</div><div class="year">1970</div><div class="title">Sugar Magnolia</div><div class="time">3:19	</div></div>
+<div class="entry"><div class="artist">Incredible String Band</div><div class="album">The Hangman's Beautiful Daughter</div><div class="year">1968</div><div class="title">Nightfall</div><div class="time">2:33	</div></div>
+<div class="entry"><div class="artist">Scorpion</div><div class="album">Scorpion</div><div class="year">1969</div><div class="title">Please Make My Mind Right</div><div class="time">4:55	</div></div>
+<div class="entry"><div class="artist">Mississippi John Hurt</div><div class="album">The Library of Congress Sessions, July 1963</div><div class="year">1928</div><div class="title">Avalon Blues</div><div class="time">3:04	</div></div>
+<div class="entry"><div class="artist">Bloomfield, Kooper, Stills</div><div class="album">Super Session (Live At The Fillmore East)</div><div class="year">1968</div><div class="title">It Takes A Lot To Laugh, It Takes A Train To Cry (Live)</div><div class="time">3:30	</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">Ummagumma</div><div class="year">1969</div><div class="title">The Grand Vizer's Garden: Party Part III (Exit)</div><div class="time">0:39	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles (White Album)</div><div class="year">1968</div><div class="title">Back In The U.S.S.R.</div><div class="time">2:43	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles (White Album)</div><div class="year">1968</div><div class="title">Dear Prudence</div><div class="time">3:57	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles (White Album)</div><div class="year">1968</div><div class="title">Glass Onion</div><div class="time">2:18	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles (White Album)</div><div class="year">1968</div><div class="title">Ob-La-Di, Ob-La-Da</div><div class="time">3:09	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles (White Album)</div><div class="year">1968</div><div class="title">Wild Honey Pie</div><div class="time">1:01	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles (White Album)</div><div class="year">1968</div><div class="title">The Continuing Story Of Bungalow Bill</div><div class="time">3:06	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles (White Album)</div><div class="year">1968</div><div class="title">While My Guitar Gently Weeps</div><div class="time">4:45	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles (White Album)</div><div class="year">1968</div><div class="title">Happiness Is A Warm Gun</div><div class="time">2:44	</div></div>
+<div class="entry"><div class="artist">Free</div><div class="album">Mark's Mix 20</div><div class="year">1969</div><div class="title">Walk In My Shadow</div><div class="time">3:30	</div></div>
+<div class="entry"><div class="artist">The Moody Blues</div><div class="album">In Search Of The Lost Chord</div><div class="year">1968</div><div class="title">Dr. Livingston, I Presume</div><div class="time">2:58	</div></div>
+<div class="entry"><div class="artist">Gong</div><div class="album">Camembert Electrique</div><div class="year">1971</div><div class="title">Squeezing Sponges over Policemen's Heads</div><div class="time">0:13	</div></div>
+<div class="entry"><div class="artist">Joni Mitchell</div><div class="album">Ladies Of The Canyon</div><div class="year">1970</div><div class="title">Rainy Night House</div><div class="time">3:25	</div></div>
+<div class="entry"><div class="artist">The Monkees</div><div class="album">Headquarters (US Colgems Mono- Ebbetts)</div><div class="year">1967</div><div class="title">Mr. Webster</div><div class="time">2:05	</div></div>
+<div class="entry"><div class="artist">Lenny Breau</div><div class="album">Guitar Sounds</div><div class="year">1968</div><div class="title">Monday, Monday</div><div class="time">2:31	</div></div>
+<div class="entry"><div class="artist">Fat Mattress</div><div class="album">Fat Mattress</div><div class="year">1969</div><div class="title">Petrol Pump Assistant</div><div class="time">3:03	</div></div>
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[4]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">The End</div><div class="album">Introspection</div><div class="year">1969</div><div class="title">She Said Yeah</div><div class="time">2:51	</div></div>
+<div class="entry"><div class="artist">Bloodrock</div><div class="album">Bloodrock</div><div class="year">1970</div><div class="title">Fatback</div><div class="time">3:24	</div></div>
+<div class="entry"><div class="artist">Davie Allan & The Arrows</div><div class="album">Nuggets: Original Artyfacts From The First Psychedelic Era, Vol. 4</div><div class="year">1966</div><div class="title">Blues' Theme</div><div class="time">2:10	</div></div>
+<div class="entry"><div class="artist">Mountain</div><div class="album">Nantucket Sleighride [Bonus Track]</div><div class="year">1971</div><div class="title">Tired Angels (To J.M.H.)</div><div class="time">4:41	</div></div>
+<div class="entry"><div class="artist">It's a Beautiful Day</div><div class="album">It's a Beautiful Day</div><div class="year">1969</div><div class="title">Hot Summer Day</div><div class="time">5:47	</div></div>
+<div class="entry"><div class="artist">Rahsaan Roland Kirk</div><div class="album">Heavy Flute</div><div class="year">1972</div><div class="title">Ain't No Sunshine</div><div class="time">2:27	</div></div>
+<div class="entry"><div class="artist">Sagittarius</div><div class="album">Nuggets: Original Artyfacts From The First Psychedelic Era</div><div class="year">1967</div><div class="title">My World Fell Down</div><div class="time">3:50	</div></div>
+<div class="entry"><div class="artist">The Zodiac</div><div class="album">Cosmic Sounds</div><div class="year">1967</div><div class="title">9. Sagittarius - The Versatile Daredevil</div><div class="time">2:11	</div></div>
+<div class="entry"><div class="artist">The Savage Rose</div><div class="album">Savage Rose</div><div class="year">1968</div><div class="title">Open Air Shop</div><div class="time">5:33	</div></div>
+<div class="entry"><div class="artist">Moondog</div><div class="album">Moondog [1969]</div><div class="year">1969</div><div class="title">Lament I, Bird's Lament</div><div class="time">1:43	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">BBC Sessions [Disc 1]</div><div class="year">1967</div><div class="title">Driving South (Second Version)</div><div class="time">4:49	</div></div>
+<div class="entry"><div class="artist">Sandy Denny & The Strawbs</div><div class="album">All Our Own Work</div><div class="year">1967</div><div class="title">Always On My Mind</div><div class="time">1:51	</div></div>
+<div class="entry"><div class="artist">Group 1850</div><div class="album">Agemo's Trip To Mother Earth</div><div class="year">1968</div><div class="title">Little Fly</div><div class="time">4:27	</div></div>
+<div class="entry"><div class="artist">Mary Butterworth</div><div class="album">Mary Butterworth</div><div class="year">1969</div><div class="title">Phaze II</div><div class="time">6:09	</div></div>
+<div class="entry"><div class="artist">Illinois Speed Press</div><div class="album">The Illinois Speed Press</div><div class="year">1969</div><div class="title">Free Ride</div><div class="time">4:26	</div></div>
+<div class="entry"><div class="artist">Fuzzy Duck</div><div class="album">Fuzzy Duck</div><div class="year">1971</div><div class="title">In Our Time</div><div class="time">6:41	</div></div>
+<div class="entry"><div class="artist">The Chocolate Watchband</div><div class="album">No Way Out...Plus</div><div class="year">1967</div><div class="title">In The Midnight Hour (2)</div><div class="time">4:50	</div></div>
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[5]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">The Holy Mackerel</div><div class="album">The Holy Mackerel</div><div class="year">1968</div><div class="title">Wild Flowers</div><div class="time">3:59	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="album">Led Zeppelin II</div><div class="year">1969</div><div class="title">Heartbreaker</div><div class="time">4:14	</div></div>
+<div class="entry"><div class="artist">The Smoke</div><div class="album">It's Smoke Time</div><div class="year">1967</div><div class="title">We Can Take It</div><div class="time">2:47	</div></div>
+<div class="entry"><div class="artist">Caravan</div><div class="album">Caravan</div><div class="year">1968</div><div class="title">Magic Man</div><div class="time">4:06	</div></div>
+<div class="entry"><div class="artist">Caravan</div><div class="album">Caravan</div><div class="year">1968</div><div class="title">Grandma's Lawn</div><div class="time">3:28	</div></div>
+<div class="entry"><div class="artist">Caravan</div><div class="album">Caravan</div><div class="year">1968</div><div class="title">Where but for Caravan Would I</div><div class="time">9:02	</div></div>
+<div class="entry"><div class="artist">Kak</div><div class="album">Kak</div><div class="year">1969</div><div class="title">Electric Sailor</div><div class="time">3:05	</div></div>
+<div class="entry"><div class="artist">Muddy Waters</div><div class="album">After the Rain</div><div class="year">1969</div><div class="title">Bottom Of The Sea</div><div class="time">5:23	</div></div>
+<div class="entry"><div class="artist">The Nice</div><div class="album">The Nice - Greatest Hits</div><div class="year">1968</div><div class="title">The Thoughts Of Emerlist Davjack</div><div class="time">2:50	</div></div>
+<div class="entry"><div class="artist">Love</div><div class="album">Forever Changes</div><div class="year">1967</div><div class="title">Bummer In The Summer</div><div class="time">2:24	</div></div>
+<div class="entry"><div class="artist">Rotary Connection</div><div class="album">Aladdin</div><div class="year">1968</div><div class="title">V.I.P.</div><div class="time">3:05	</div></div>
+<div class="entry"><div class="artist">John Coltrane</div><div class="album">A Love Supreme</div><div class="year">1965</div><div class="title">Part 2 ˜ Resolution</div><div class="time">7:20	</div></div>
+<div class="entry"><div class="artist">Eyes Of Blue</div><div class="album">In Fields of Ardath</div><div class="year">1969</div><div class="title">Little Bird</div><div class="time">2:34	</div></div>
+<div class="entry"><div class="artist">The Kinks</div><div class="album">The Kinks Are The Village Green Preservation Society</div><div class="year">1968</div><div class="title">Phenomenal Cat</div><div class="time">2:39	</div></div>
+<div class="entry"><div class="artist">Gentle Giant</div><div class="album">Octopus</div><div class="year">1972</div><div class="title">Dog's Life</div><div class="time">3:12	</div></div>
+<div class="entry"><div class="artist">The Doors</div><div class="album">The Doors</div><div class="year">1967</div><div class="title">The Crystal Ship</div><div class="time">2:35	</div></div>
+<div class="entry"><div class="artist">Various Artists</div><div class="album">Television's Greatest Hits Of The '50s And '60s</div><div class="year">1986</div><div class="title">Happy Trails</div><div class="time">0:59	</div></div>
+
+</div>
+</div>
+
+<div class="playlist_contents" id="C03-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #3 Contents</span> <a href="#" onclick='hideMe("#C03-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[6]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="artist">The Piper At The Gates Of Dawn</div><div class="year">1967</div><div class="title">Scarecrow</div><div class="time">2:12	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="artist">Electric Ladyland</div><div class="year">1968</div><div class="title">...And The Gods Made Love</div><div class="time">1:23	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="artist">Electric Ladyland</div><div class="year">1968</div><div class="title">Have You Ever Been (To Electric Ladyland)</div><div class="time">2:10	</div></div>
+<div class="entry"><div class="artist">Pure Food & Drug Act</div><div class="artist">Choice Cuts</div><div class="year">1972</div><div class="title">What Comes Around Goes Around</div><div class="time">4:21	</div></div>
+<div class="entry"><div class="artist">The Litter</div><div class="artist">Emerge</div><div class="year">1969</div><div class="title">Little Red Book</div><div class="time">3:34	</div></div>
+<div class="entry"><div class="artist">Tangerine Dream</div><div class="artist">Electronic Meditation</div><div class="year">1970</div><div class="title">Resurrection</div><div class="time">3:22	</div></div>
+<div class="entry"><div class="artist">Hugh Masekela</div><div class="artist">Grrr</div><div class="year">1966</div><div class="title">Zuul and the Mexican</div><div class="time">3:22	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="artist">Led Zeppelin II</div><div class="year">1969</div><div class="title">Whole Lotta Love</div><div class="time">5:34	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="artist">Led Zeppelin II</div><div class="year">1969</div><div class="title">What Is And What Should Never Be</div><div class="time">4:46	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="artist">Led Zeppelin II</div><div class="year">1969</div><div class="title">The Lemon Song</div><div class="time">6:20	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="artist">Led Zeppelin II</div><div class="year">1969</div><div class="title">Thank You</div><div class="time">4:50	</div></div>
+<div class="entry"><div class="artist">The Moody Blues</div><div class="artist">In Search Of The Lost Chord</div><div class="year">1968</div><div class="title">Om</div><div class="time">5:45	</div></div>
+<div class="entry"><div class="artist">Joe Weisbecker</div><div class="artist">First Philadelphia Computer Music Festival</div><div class="year">1978</div><div class="title">Maple Leaf Rag</div><div class="time">1:04	</div></div>
+<div class="entry"><div class="artist">Vanilla Fudge</div><div class="artist">Renaissance</div><div class="year">1968</div><div class="title">The Sky Cried (When I Was a Boy)</div><div class="time">7:40	</div></div>
+<div class="entry"><div class="artist">Magic</div><div class="artist">Magic Enclosed</div><div class="year">1969</div><div class="title">Wake Up Girl</div><div class="time">2:35	</div></div>
+<div class="entry"><div class="artist">J.B. Lenoir</div><div class="artist">Vietnam Blues</div><div class="year">1970</div><div class="title">Voodoo Music</div><div class="time">2:26	</div></div>
+<div class="entry"><div class="artist">H.P. Lovecraft</div><div class="artist">H.P. Lovecraft I</div><div class="year">1967</div><div class="title">That's How Much I Love You Baby</div><div class="time">3:59	</div></div>
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[7]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="artist">The Hurdy Gurdy Man</div><div class="year">1968</div><div class="title">Hurdy Gurdy Man</div><div class="time">3:20	</div></div>
+<div class="entry"><div class="artist">Intersystems</div><div class="artist">Free Psychedelic Poster Inside</div><div class="year">1968</div><div class="title">Free Psychedelic Poster Inside - 3</div><div class="time">1:56	</div></div>
+<div class="entry"><div class="artist">Grapefruit</div><div class="artist">Around Grapefruit</div><div class="year">1967</div><div class="title">Elevator (Remastered)</div><div class="time">2:07	</div></div>
+<div class="entry"><div class="artist">Julie Driscoll, Brian Auger & The Trinity</div><div class="artist">Streetnoise</div><div class="year">1973</div><div class="title">A Word About Colour</div><div class="time">1:36	</div></div>
+<div class="entry"><div class="artist">Moby Grape</div><div class="artist">Moby Grape</div><div class="year">1967</div><div class="title">Indifference</div><div class="time">4:14	</div></div>
+<div class="entry"><div class="artist">Spirit</div><div class="artist">Twelve Dreams Of Dr. Sardonicus</div><div class="year">1970</div><div class="title">When I Touch You</div><div class="time">5:37	</div></div>
+<div class="entry"><div class="artist">The Zodiac</div><div class="artist">Cosmic Sounds</div><div class="year">1967</div><div class="title">7. Libra - The Flower Child</div><div class="time">3:33	</div></div>
+<div class="entry"><div class="artist">Gun</div><div class="artist">Gunsight</div><div class="year">1969</div><div class="title">Dreams And Screams</div><div class="time">5:20	</div></div>
+<div class="entry"><div class="artist">Al Kooper</div><div class="artist">I Stand Alone</div><div class="year">1968</div><div class="title">Coloured Rain</div><div class="time">3:02	</div></div>
+<div class="entry"><div class="artist">Orang-Utan</div><div class="artist">Orang-Utan</div><div class="year">1971</div><div class="title">Fly Me High</div><div class="time">4:52	</div></div>
+<div class="entry"><div class="artist">Blodwyn Pig</div><div class="artist">Getting To This</div><div class="year">1970</div><div class="title">Variations on Nainos</div><div class="time">3:48	</div></div>
+<div class="entry"><div class="artist">Curved Air</div><div class="artist">Air Conditioning</div><div class="year">1970</div><div class="title">It Happened Today</div><div class="time">4:52	</div></div>
+<div class="entry"><div class="artist">Shuggie Otis</div><div class="artist">Inspiration Information</div><div class="year">1974</div><div class="title">Strawberry Letter 23</div><div class="time">3:59	</div></div>
+<div class="entry"><div class="artist">Miles Davis</div><div class="artist">Bitches Brew</div><div class="year"></div><div class="title">John McLaughlin</div><div class="time">4:26	</div></div>
+<div class="entry"><div class="artist">After All</div><div class="artist">Psychedelic Essentials</div><div class="year">2011</div><div class="title">Waiting</div><div class="time">4:24	</div></div>
+<div class="entry"><div class="artist">The Electric Prunes</div><div class="artist">Underground</div><div class="year">1967</div><div class="title">Children Of Rain</div><div class="time">2:38	</div></div>
+<div class="entry"><div class="artist">Amon Duul II</div><div class="artist">Tanz der Lemminge</div><div class="year">2006</div><div class="title">Stumbling Over Melted Moonlight</div><div class="time">4:38	</div></div>
+<div class="entry"><div class="artist">The Move</div><div class="artist">The Move</div><div class="year">1968</div><div class="title">Useless Information</div><div class="time">2:54	</div></div>
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[8]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Procol Harum</div><div class="artist">Broken Barricades</div><div class="year">1971</div><div class="title">Simple Sister</div><div class="time">5:55	</div></div>
+<div class="entry"><div class="artist">Sapphire Thinkers</div><div class="artist">From Within</div><div class="year">1969</div><div class="title">Melancholy Baby</div><div class="time">2:17	</div></div>
+<div class="entry"><div class="artist">If</div><div class="artist">2</div><div class="year">1970</div><div class="title">Shadows and Echoes</div><div class="time">4:26	</div></div>
+<div class="entry"><div class="artist">Junior's Eyes</div><div class="artist">,,Battersea Power Station,,</div><div class="year"></div><div class="title">So Embarrassed</div><div class="time">3:18	</div></div>
+<div class="entry"><div class="artist">Traffic</div><div class="artist">Traffic</div><div class="year">1968</div><div class="title">Cryin' To Be Heard</div><div class="time">5:13	</div></div>
+<div class="entry"><div class="artist">The Bees</div><div class="artist">Nuggets: Original Artyfacts From The First Psychedelic Era, Vol. 4</div><div class="year">1966</div><div class="title">Voices Green And Purple</div><div class="time">1:36	</div></div>
+<div class="entry"><div class="artist">Country Joe & The Fish</div><div class="artist">Electrique Music for the Mind and Body</div><div class="year">1967</div><div class="title">Superbird</div><div class="time">2:09	</div></div>
+<div class="entry"><div class="artist">Country Joe & The Fish</div><div class="artist">Electrique Music for the Mind and Body</div><div class="year">1967</div><div class="title">Sad and Lonely Times</div><div class="time">2:28	</div></div>
+<div class="entry"><div class="artist">Country Joe & The Fish</div><div class="artist">Electrique Music for the Mind and Body</div><div class="year"></div><div class="title">Love</div><div class="time">2:23	</div></div>
+<div class="entry"><div class="artist">Country Joe & The Fish</div><div class="artist">Electrique Music for the Mind and Body</div><div class="year">1967</div><div class="title">The Masked Marauder</div><div class="time">3:13	</div></div>
+<div class="entry"><div class="artist">Country Joe & The Fish</div><div class="artist">Electrique Music for the Mind and Body</div><div class="year">1967</div><div class="title">Grace</div><div class="time">7:05	</div></div>
+<div class="entry"><div class="artist">Ten Years After</div><div class="artist">Ssssh</div><div class="year">1969</div><div class="title">Bad Scene</div><div class="time">3:31	</div></div>
+<div class="entry"><div class="artist">Saturday's Children</div><div class="artist">Deck Five b/w Christmas Sounds</div><div class="year">1966</div><div class="title">Christmas Sounds</div><div class="time">2:12	</div></div>
+<div class="entry"><div class="artist">The Doors</div><div class="artist">Morrison Hotel</div><div class="year">1970</div><div class="title">Blue Sunday</div><div class="time">2:13	</div></div>
+<div class="entry"><div class="artist">Black Sabbath</div><div class="artist">Paranoid</div><div class="year">1970</div><div class="title">Paranoid</div><div class="time">2:53	</div></div>
+<div class="entry"><div class="artist">Harvey Mandel</div><div class="artist">The Snake</div><div class="year"></div><div class="title">Lynda Love</div><div class="time">2:30	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="artist">The Beatles (White Album) [Disc 1]</div><div class="year">1968</div><div class="title">I'm So Tired</div><div class="time">2:03	</div></div>
+<div class="entry"><div class="artist">Arthur Brown</div><div class="artist">The Crazy World Of Arthur Brow</div><div class="year">1968</div><div class="title">Fire</div><div class="time">3:02	</div></div>
+<div class="entry"><div class="artist">The Rascals</div><div class="artist">Groovin'</div><div class="year">1967</div><div class="title">Find Somebody</div><div class="time">3:49	</div></div>
+<div class="entry"><div class="artist">Lothar and the Hand People</div><div class="artist">Presenting...Lothar and The Hand People</div><div class="year">1968</div><div class="title">Machines</div><div class="time">2:34	</div></div>
+<div class="entry"><div class="artist">Various Artists</div><div class="artist">Television's Greatest Hits Of The '50s And '60s</div><div class="year">1986</div><div class="title">Happy Trails</div><div class="time">0:59	</div></div>
+
+</div>
+</div>
+
+<div class="playlist_contents" id="C04-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #4 Contents</span> <a href="#" onclick='hideMe("#C04-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[9]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Hard Meat</div><div class="album">Through A Window</div><div class="year">1970</div><div class="title">A Song Of Summer</div><div class="time">5:10	</div></div>
+<div class="entry"><div class="artist">Paul Horn</div><div class="album">Inside the Taj Mahal</div><div class="year">1968</div><div class="title">Pt. X Flute</div><div class="time">1:39	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="album">Led Zeppelin II</div><div class="year">1969</div><div class="title">Black Dog</div><div class="time">4:55	</div></div>
+<div class="entry"><div class="artist">Gandalf</div><div class="album">Gandalf</div><div class="year">1968</div><div class="title">Can You Travel In The Dark Alone</div><div class="time">3:08	</div></div>
+<div class="entry"><div class="artist">Symphonieorchester des Bayerischen Rundfunks</div><div class="album">Orff: Carmina Burana - Harding</div><div class="year">2010</div><div class="title">Orff: Carmina Burana / Fortuna Imperatrix Mundi - "O Fortuna"</div><div class="time">2:31	</div></div>
+<div class="entry"><div class="artist">Blue Cheer</div><div class="album">Vincebus Eruptum</div><div class="year">1968</div><div class="title">Second Time Around</div><div class="time">6:20	</div></div>
+<div class="entry"><div class="artist">Richie Havens</div><div class="album">Richard P. Havens, 1983</div><div class="year">1969</div><div class="title">Stop Pulling and Pushing Me</div><div class="time">1:51	</div></div>
+<div class="entry"><div class="artist">Richie Havens</div><div class="album">Richard P. Havens, 1983</div><div class="year">1969</div><div class="title">For Heaven's Sake</div><div class="time">7:05	</div></div>
+<div class="entry"><div class="artist">Richie Havens</div><div class="album">Richard P. Havens, 1983</div><div class="year">1969</div><div class="title">Strawberry Fields Forever</div><div class="time">3:40	</div></div>
+<div class="entry"><div class="artist">Richie Havens</div><div class="album">Richard P. Havens, 1983</div><div class="year">1969</div><div class="title">What More Can I Say, John?</div><div class="time">4:40	</div></div>
+<div class="entry"><div class="artist">Jericho Jones</div><div class="album">Junkies Monkeys And Donkeys</div><div class="year">1971</div><div class="title">Triangulum</div><div class="time">0:48	</div></div>
+<div class="entry"><div class="artist">The Third Bardo</div><div class="album">Nuggets: Original Artyfacts From The First Psychedelic Era, Vol. 3</div><div class="year">1967</div><div class="title">I'm Five Years Ahead Of My Time</div><div class="time">2:17	</div></div>
+<div class="entry"><div class="artist">The Blues Magoos</div><div class="album">Psychedelic Lollipop</div><div class="year">1966</div><div class="title">Love Seems Doomed</div><div class="time">2:59	</div></div>
+<div class="entry"><div class="artist">Jethro Tull</div><div class="album">This Was</div><div class="year">1968</div><div class="title">Beggar's Farm</div><div class="time">4:21	</div></div>
+<div class="entry"><div class="artist">Frijid Pink</div><div class="album">Frijid Pink</div><div class="year">1970</div><div class="title">God Gave Me You</div><div class="time">3:36	</div></div>
+<div class="entry"><div class="artist">Under Milkwood</div><div class="album">Under Milkwood</div><div class="year">1969</div><div class="title">Forgotten Bridge</div><div class="time">3:49	</div></div>
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[10]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Fresh Cream</div><div class="year">1966</div><div class="title">N.S.U.</div><div class="time">2:48	</div></div>
+<div class="entry"><div class="artist">Hawkwind</div><div class="album">Space Ritual</div><div class="year">1973</div><div class="title">Sonic Attack</div><div class="time">2:55	</div></div>
+<div class="entry"><div class="artist">Focus</div><div class="album">Moving Waves</div><div class="year">1971</div><div class="title">Janis</div><div class="time">3:08	</div></div>
+<div class="entry"><div class="artist">Zen</div><div class="album">Hair</div><div class="year">1969</div><div class="title">Hair (From The Musical ''Hair'')</div><div class="time">2:07	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">Sgt. Pepper's Lonely Hearts Club Band</div><div class="year">1967</div><div class="title">Good Morning Good Morning</div><div class="time">2:42	</div></div>
+<div class="entry"><div class="artist">The Firesign Theatre</div><div class="album">How Can You Be In Two Places At Once When You're Not Anywhere At All</div><div class="year">1969</div><div class="title">Vacancy - No Vacancy</div><div class="time">1:34	</div></div>
+<div class="entry"><div class="artist">Traffic</div><div class="album">Mr. Fantasy</div><div class="year">1967</div><div class="title">Utterly Simple</div><div class="time">3:16	</div></div>
+<div class="entry"><div class="artist">Joe Zawinul</div><div class="album">Zawinul</div><div class="year">1971</div><div class="title">In A Silent Way </div><div class="time">4:49	</div></div>
+<div class="entry"><div class="artist">The Golden Dawn</div><div class="album">Power Plant</div><div class="year">1967</div><div class="title">Tell Me Why</div><div class="time">2:08	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Electric Ladyland</div><div class="year">1968</div><div class="title">1983...(A Merman I Should Turn To Be)</div><div class="time">13:40	</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">Barabajagal</div><div class="year">1969</div><div class="title">Goo Goo Barabajagal (Love is Hot)</div><div class="time">3:19	</div></div>
+<div class="entry"><div class="artist">Family</div><div class="album">Fearless</div><div class="year">1971</div><div class="title">Larf And Sing</div><div class="time">2:43	</div></div>
+<div class="entry"><div class="artist">Touch</div><div class="album">Touch</div><div class="year">1969</div><div class="title">We Feel Fine</div><div class="time">4:41	</div></div>
+<div class="entry"><div class="artist">The Graham Bond Organisation</div><div class="album">The Sound Of 65</div><div class="year">1965</div><div class="title">Train Time</div><div class="time">2:24	</div></div>
+<div class="entry"><div class="artist">Affinity</div><div class="album">Affinity</div><div class="year">1970</div><div class="title">Coconut Grove</div><div class="time">2:38	</div></div>
+<div class="entry"><div class="artist">Hurdy Gurdy</div><div class="album">Hurdy Gurdy</div><div class="year">1971</div><div class="title">The Giant</div><div class="time">5:00	</div></div>
+
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[11]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers Of Invention</div><div class="album">Freak Out!</div><div class="year">1966</div><div class="title">Wowie Zowie</div><div class="time">2:53	</div></div>
+<div class="entry"><div class="artist">Yan Pascal Tortelier, Yo-Yo Ma, Etc., Eugene Ormandy</div><div class="album">Saint-Saëns: Organ Symphony, Carnival Of The Animals, Etc.</div><div class="year">1978</div><div class="title">Saint-Saëns: Carnival Of The Animals - 12. Fossiles</div><div class="time">1:27	</div></div>
+<div class="entry"><div class="artist">Van der Graaf Generator</div><div class="album">H to He, Who am the Only One</div><div class="year">1970</div><div class="title">The Emperor in His War-Room</div><div class="time">8:16	</div></div>
+<div class="entry"><div class="artist">Cactus</div><div class="album">Cactus</div><div class="year">1970</div><div class="title">Let Me Swim</div><div class="time">3:49	</div></div>
+<div class="entry"><div class="artist">Jan Akkerman</div><div class="album">Tabernakel</div><div class="year">1974</div><div class="title">A Gaillard [By Dowland]</div><div class="time">1:35	</div></div>
+<div class="entry"><div class="artist">John Lennon</div><div class="album">Imagine</div><div class="year">1971</div><div class="title">Oh My Love</div><div class="time">2:46	</div></div>
+<div class="entry"><div class="artist">Wool</div><div class="album">Wool</div><div class="year">2006</div><div class="title">Love, Love, Love, Love, Love</div><div class="time">3:15	</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">Dark Side Of The Moon</div><div class="year">1973</div><div class="title">Money</div><div class="time">6:32	</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">Dark Side Of The Moon</div><div class="year">1973</div><div class="title">Us And Them</div><div class="time">7:41	</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">Dark Side Of The Moon</div><div class="year">1973</div><div class="title">Any Colour You Like</div><div class="time">3:26	</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">Dark Side Of The Moon</div><div class="year">1973</div><div class="title">Brain Damage</div><div class="time">3:50	</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">Dark Side Of The Moon</div><div class="year">1973</div><div class="title">Eclipse</div><div class="time">2:04	</div></div>
+<div class="entry"><div class="artist">The Lemon Pipers</div><div class="album">Jungle Marmalade</div><div class="year">1968</div><div class="title">I Was Not Born To Follow</div><div class="time">2:33	</div></div>
+<div class="entry"><div class="artist">Jefferson Airplane</div><div class="album">After Bathing At Baxter's</div><div class="year">1967</div><div class="title">Watch Her Ride</div><div class="time">3:02	</div></div>
+<div class="entry"><div class="artist">Head Machine</div><div class="album">Orgasm</div><div class="year">1970</div><div class="title">Make The Feeling Last</div><div class="time">3:36	</div></div>
+<div class="entry"><div class="artist">Mountain</div><div class="album">Climbing</div><div class="year">1970</div><div class="title">Mississippi Queen</div><div class="time">2:30	</div></div>
+<div class="entry"><div class="artist">Twentieth Century Zoo</div><div class="album">Thunder On A Clear Day</div><div class="year">1968</div><div class="title">You Don't Remember</div><div class="time">3:09	</div></div>
+<div class="entry"><div class="artist">Rotary Connection</div><div class="album">Rotary Connection</div><div class="year">1967</div><div class="title">Didn't Want To Have To Do It</div><div class="time">3:10	</div></div>
+<div class="entry"><div class="artist">Various Artists</div><div class="album">Television's Greatest Hits Of The '50s And '60s</div><div class="year">1986</div><div class="title">Happy Trails</div><div class="time">0:59	</div></div>
+
+</div>
+</div>
+
+<div class="playlist_contents" id="C05-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #5 Contents</span> <a href="#" onclick='hideMe("#C05-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[12]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">The Kinks</div><div class="album">The Kinks Are The Village Green Preservation Society</div><div class="year">1968</div><div class="title">Wicked Annabella</div><div class="time">2:45	</div></div>
+<div class="entry"><div class="artist">July</div><div class="album">July</div><div class="year">1968</div><div class="title">Dandelion Seeds</div><div class="time">4:32	</div></div>
+<div class="entry"><div class="artist">Little Free Rock</div><div class="album">Little Free Rock</div><div class="year">1969</div><div class="title">Blud</div><div class="time">3:55	</div></div>
+<div class="entry"><div class="artist">Frank Zappa</div><div class="album">Absolutely Free</div><div class="year">1967</div><div class="title">Call Any Vegetable</div><div class="time">2:15	</div></div>
+<div class="entry"><div class="artist">The End</div><div class="album">Introspection</div><div class="year">2015</div><div class="title">Linen Draper (Interlude)</div><div class="time">0:13	</div></div>
+<div class="entry"><div class="artist">The End</div><div class="album">Introspection</div><div class="year">2015</div><div class="title">Don't Take Me</div><div class="time">3:25	</div></div>
+<div class="entry"><div class="artist">Paul O'Dette</div><div class="album">John Dowland - Complete Lute Works - Vol. 2</div><div class="year">1997</div><div class="title">Capitain Candishe his Galyard</div><div class="time">1:02	</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">Sunshine Superman</div><div class="year">1966</div><div class="title">Three King Fishers</div><div class="time">3:21	</div></div>
+<div class="entry"><div class="artist">Clear Light</div><div class="album">Clear Light</div><div class="year">1967</div><div class="title">Black Roses</div><div class="time">2:10	</div></div>
+<div class="entry"><div class="artist">Clear Light</div><div class="album">Clear Light</div><div class="year">1967</div><div class="title">Sand</div><div class="time">2:39	</div></div>
+<div class="entry"><div class="artist">Clear Light</div><div class="album">Clear Light</div><div class="year">1967</div><div class="title">A Child's Smile</div><div class="time">1:38	</div></div>
+<div class="entry"><div class="artist">Clear Light</div><div class="album">Clear Light</div><div class="year">1967</div><div class="title">Street Singer</div><div class="time">3:18	</div></div>
+<div class="entry"><div class="artist">Clear Light</div><div class="album">Clear Light</div><div class="year">1967</div><div class="title">The Ballad Of Freddie & Larry</div><div class="time">1:57	</div></div>
+<div class="entry"><div class="artist">Clear Light</div><div class="album">Clear Light</div><div class="year">1967</div><div class="title">With All In Mind</div><div class="time">2:58	</div></div>
+<div class="entry"><div class="artist">D. H. Van Lenten</div><div class="album">First Philadelphia Computer Music Festival</div><div class="year">1978</div><div class="title">Synthesized Computer Speech Demonstration (1963)</div><div class="time">2:19	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">Abbey Road</div><div class="year">1969</div><div class="title">Sun King</div><div class="time">2:26	</div></div>
+<div class="entry"><div class="artist">Blue Cheer</div><div class="album">Outsideinside</div><div class="year">1968</div><div class="title">Sun Cycle</div><div class="time">4:15	</div></div>
+<div class="entry"><div class="artist">Fuzzy Duck</div><div class="album">Fuzzy Duck</div><div class="year">1971</div><div class="title">Time Will Be Your Doctor</div><div class="time">5:12	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="album">Led Zeppelin I</div><div class="year">1969</div><div class="title">Babe I'm Gonna Leave You</div><div class="time">6:42	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">Sgt. Pepper's Lonely Hearts Club Band</div><div class="year">1967</div><div class="title">Sgt. Pepper's Lonely Hearts Club Band</div><div class="time">2:03	</div></div>
+<div class="entry"><div class="artist">Heavy Balloon</div><div class="album">32,000 Pound</div><div class="year">1969</div><div class="title">Owed To Sgt. Pepper</div><div class="time">2:48	</div></div>
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[13]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">13th Floor Elevators</div><div class="album">The Psychedelic Sounds</div><div class="year">1966</div><div class="title">You Don't Know</div><div class="time">2:59	</div></div>
+<div class="entry"><div class="artist">Albert King</div><div class="album">Born Under A Bad Sign</div><div class="year"></div><div class="title">Crosscut Saw</div><div class="time">2:35	</div></div>
+<div class="entry"><div class="artist">Affinity</div><div class="album">Affinity</div><div class="year">2014</div><div class="title">Mr Joy</div><div class="time">5:06	</div></div>
+<div class="entry"><div class="artist">The Beach Boys</div><div class="album">Pet Sounds</div><div class="year">1966</div><div class="title">Pet Sounds</div><div class="time">2:38	</div></div>
+<div class="entry"><div class="artist">Fat Mattress</div><div class="album">Fat Mattress</div><div class="year">2009</div><div class="title">I Don't Mind</div><div class="time">3:50	</div></div>
+<div class="entry"><div class="artist">Dr. John</div><div class="album">Gris-Gris</div><div class="year"></div><div class="title">Mama Roux</div><div class="time">2:59	</div></div>
+<div class="entry"><div class="artist">The Byrds</div><div class="album">The Notorious Byrd Brothers</div><div class="year">1968</div><div class="title">Moog Raga [Instrumental]</div><div class="time">3:27	</div></div>
+<div class="entry"><div class="artist">The Growing Concern</div><div class="album">Growing Concern</div><div class="year">1968</div><div class="title">Mister You're A Better Man Than I</div><div class="time">4:54	</div></div>
+<div class="entry"><div class="artist">Aphrodite's Child</div><div class="album">End Of The World</div><div class="year">1968</div><div class="title">Day of the Fool</div><div class="time">5:59	</div></div>
+<div class="entry"><div class="artist">The Charlatans</div><div class="album">Nuggets: Original Artyfacts From The First Psychedelic Era, Vol. 4</div><div class="year">1966</div><div class="title">Codine</div><div class="time">2:25	</div></div>
+<div class="entry"><div class="artist">Sweetwater</div><div class="album">Melon</div><div class="year">1971</div><div class="title">Don't Forget</div><div class="time">3:04	</div></div>
+<div class="entry"><div class="artist">Chad & Jeremy</div><div class="album">The Ark</div><div class="year">2009</div><div class="title">The Ark</div><div class="time">4:52	</div></div>
+<div class="entry"><div class="artist">Eyes Of Blue</div><div class="album">Crossroads of Time</div><div class="year">2015</div><div class="title">World of Emotion</div><div class="time">2:55	</div></div>
+<div class="entry"><div class="artist">Bobak, Jons, Malone</div><div class="album">Motherlight</div><div class="year">1969</div><div class="title">Chant</div><div class="time">4:09	</div></div>
+<div class="entry"><div class="artist">Wishbone Ash</div><div class="album">Argus</div><div class="year">1972</div><div class="title">The King Will Come</div><div class="time">7:10	</div></div>
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[14]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Are You Experienced?</div><div class="year">1967</div><div class="title">Third Stone From The Sun</div><div class="time">6:44	</div></div>
+<div class="entry"><div class="artist">Small Faces</div><div class="album">Small Faces</div><div class="year">2012</div><div class="title">Up the Wooden Hills to Bedfordshire</div><div class="time">2:04	</div></div>
+<div class="entry"><div class="artist">The Zodiac</div><div class="album">Cosmic Sounds</div><div class="year">1967</div><div class="title">6. Virgo - The Perpetual Perfectionist</div><div class="time">3:11	</div></div>
+<div class="entry"><div class="artist">Grateful Dead</div><div class="album">American Beauty</div><div class="year">1970</div><div class="title">Attics Of My Life</div><div class="time">5:13	</div></div>
+<div class="entry"><div class="artist">The Blues Magoos</div><div class="album">Psychedelic Lollipop</div><div class="year">1966</div><div class="title">Worried Life Blues</div><div class="time">3:51	</div></div>
+<div class="entry"><div class="artist">Howard Roberts</div><div class="album">Antelope Freeway</div><div class="year">1971</div><div class="title">Antelope Freeway, Part I</div><div class="time">2:26	</div></div>
+<div class="entry"><div class="artist">Bert Jansch</div><div class="album">Bert Jansch</div><div class="year">1965</div><div class="title">Angi</div><div class="time">3:13	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Disraeli Gears</div><div class="year">1967</div><div class="title">Tales Of Brave Ulysses</div><div class="time">2:50	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Disraeli Gears</div><div class="year">1967</div><div class="title">Swlabr</div><div class="time">2:34	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Disraeli Gears</div><div class="year">1967</div><div class="title">We're Going Wrong</div><div class="time">3:30	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Disraeli Gears</div><div class="year">1967</div><div class="title">Outside Woman Blues</div><div class="time">2:28	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Disraeli Gears</div><div class="year">1967</div><div class="title">Take It Back</div><div class="time">3:08	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Disraeli Gears</div><div class="year">1967</div><div class="title">Mother's Lament</div><div class="time">1:48	</div></div>
+<div class="entry"><div class="artist">The Doors</div><div class="album">L. A. Woman</div><div class="year">1970</div><div class="title">L'america</div><div class="time">4:38	</div></div>
+<div class="entry"><div class="artist">Buddy Miles</div><div class="album">Expressway To Your Skull</div><div class="year">1968</div><div class="title">Train</div><div class="time">4:50	</div></div>
+<div class="entry"><div class="artist">Xhol Caravan</div><div class="album">Electrip</div><div class="year">1969</div><div class="title">All Green</div><div class="time">7:37	</div></div>
+<div class="entry"><div class="artist">Various Artists</div><div class="album">Television's Greatest Hits Of The '50s And '60s</div><div class="year">1986</div><div class="title">Happy Trails</div><div class="time">0:59	</div></div>
+
+</div>
+</div>
+
+<div class="playlist_contents" id="C06-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #6 Contents</span> <a href="#" onclick='hideMe("#C06-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[15]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Axis: Bold As Love</div><div class="year">1967</div><div class="title">If 6 Was 9</div><div class="time">5:33	</div></div>
+<div class="entry"><div class="artist">Richie Havens</div><div class="album">Richard P. Havens, 1983</div><div class="year">1969</div><div class="title">Putting Out the Vibration, and Hoping It Comes Home</div><div class="time">2:54	</div></div>
+<div class="entry"><div class="artist">The Smoke</div><div class="album">It's Smoke Time</div><div class="year">1967</div><div class="title">My Friend Jack</div><div class="time">3:05	</div></div>
+<div class="entry"><div class="artist">The Zodiac</div><div class="album">Cosmic Sounds</div><div class="year">1967</div><div class="title">12. Pisces - The Peace Piper</div><div class="time">3:20	</div></div>
+<div class="entry"><div class="artist">Rhinoceros</div><div class="album">Rhinoceros</div><div class="year">1968</div><div class="title">Same Old Way</div><div class="time">2:05	</div></div>
+<div class="entry"><div class="artist">The Move</div><div class="album">The Move</div><div class="year">1968</div><div class="title">(Here We Go Round) The Lemon Tree</div><div class="time">3:21	</div></div>
+<div class="entry"><div class="artist">Traffic</div><div class="album">Traffic</div><div class="year">1968</div><div class="title">You Can All Join In</div><div class="time">3:39	</div></div>
+<div class="entry"><div class="artist">Traffic</div><div class="album">Traffic</div><div class="year">1968</div><div class="title">Pearly Queen</div><div class="time">4:20	</div></div>
+<div class="entry"><div class="artist">Traffic</div><div class="album">Traffic</div><div class="year">1968</div><div class="title">Don't Be Sad</div><div class="time">3:24	</div></div>
+<div class="entry"><div class="artist">Traffic</div><div class="album">Traffic</div><div class="year">1968</div><div class="title">Who Knows What Tomorrow May Bring</div><div class="time">3:14	</div></div>
+<div class="entry"><div class="artist">Traffic</div><div class="album">Traffic</div><div class="year">1968</div><div class="title">Feelin' Alright</div><div class="time">4:18	</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">Ummagumma</div><div class="year">1969</div><div class="title">Several Species Of Small Furry Animals</div><div class="time">5:00	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="album">Led Zeppelin</div><div class="year">1969</div><div class="title">Dazed and Confused</div><div class="time">6:28	</div></div>
+<div class="entry"><div class="artist">Jethro Tull</div><div class="album">This Was</div><div class="year">1968</div><div class="title">Cat's Squirrel</div><div class="time">5:44	</div></div>
+<div class="entry"><div class="artist">Paul Horn</div><div class="album">Inside</div><div class="year">1968</div><div class="title">Pt. XV Voice</div><div class="time">1:00	</div></div>
+<div class="entry"><div class="artist">The Lemon Pipers</div><div class="album">Green Tambourine</div><div class="year">1968</div><div class="title">Rice Is Nice</div><div class="time">2:19	</div></div>
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[16]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Ten Years After</div><div class="album">Ssssh</div><div class="year">1969</div><div class="title">Stoned Woman</div><div class="time">3:26	</div></div>
+<div class="entry"><div class="artist">Mountain</div><div class="album">Climbing</div><div class="year">1970</div><div class="title">To My Friend</div><div class="time">3:37	</div></div>
+<div class="entry"><div class="artist">Music Emporium</div><div class="album">Music Emporium</div><div class="year">1969</div><div class="title">Cage</div><div class="time">5:10	</div></div>
+<div class="entry"><div class="artist">John Ridges</div><div class="album">First Philadelphia Computer Music Festival</div><div class="year">1978</div><div class="title">2 Part Inventnion In C Major</div><div class="time">1:23	</div></div>
+<div class="entry"><div class="artist">The Doors</div><div class="album">L. A. Woman</div><div class="year">1970</div><div class="title">Hyacinth House</div><div class="time">3:12	</div></div>
+<div class="entry"><div class="artist">The Firesign Theatre</div><div class="album">How Can You Be In Two Places At Once When You're Not Anywhere At All</div><div class="year">1969</div><div class="title">TV Or Not TV</div><div class="time">3:38	</div></div>
+<div class="entry"><div class="artist">Scorpion</div><div class="album">Scorpion</div><div class="year">1969</div><div class="title">Wildflower</div><div class="time">3:41	</div></div>
+<div class="entry"><div class="artist">Canned Heat</div><div class="album">Living The Blues</div><div class="year">1968</div><div class="title">Parthenogenesis</div><div class="time">20:06	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Wheels Of Fire</div><div class="year">1968</div><div class="title">Those Were the Days</div><div class="time">2:54	</div></div>
+<div class="entry"><div class="artist">Pharoah Sanders</div><div class="album">Village Of The Pharoahs</div><div class="year">1973</div><div class="title">Memories Of Lee Morgan</div><div class="time">5:39	</div></div>
+<div class="entry"><div class="artist">Moondog</div><div class="album">Moondog</div><div class="year">1956</div><div class="title">Big Cat</div><div class="time">1:50	</div></div>
+<div class="entry"><div class="artist">Hawkwind</div><div class="album">Space Ritual [Live] [Disc 2]</div><div class="year">1973</div><div class="title">Master Of The Universe (a)</div><div class="time">7:37	</div></div>
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[17]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Leviathan</div><div class="album">Forgotten Jewels (Uk 1969)</div><div class="year">1969</div><div class="title">Times To Remember</div><div class="time">2:46	</div></div>
+<div class="entry"><div class="artist">Lothar and the Hand People</div><div class="album">Presenting...Lothar and The Hand People</div><div class="year">1968</div><div class="title">Woody Woodpecker</div><div class="time">0:49	</div></div>
+<div class="entry"><div class="artist">Mock Duck</div><div class="album">Test Record</div><div class="year">1968</div><div class="title">Groundhog</div><div class="time">4:58	</div></div>
+<div class="entry"><div class="artist">Sweetwater</div><div class="album">Melon</div><div class="year">1971</div><div class="title">Naturally</div><div class="time">3:35	</div></div>
+<div class="entry"><div class="artist">The Who</div><div class="album">Tommy</div><div class="year">1969</div><div class="title">Amazing Journey</div><div class="time">3:25	</div></div>
+<div class="entry"><div class="artist">The Litter</div><div class="album">Emerge</div><div class="year">1969</div><div class="title">Feeling</div><div class="time">2:53	</div></div>
+<div class="entry"><div class="artist">Under Milkwood</div><div class="album">Under Milkwood</div><div class="year">1969</div><div class="title">Changing Season</div><div class="time">4:23	</div></div>
+<div class="entry"><div class="artist">Steve Miller Band</div><div class="album">Sailor</div><div class="year">1968</div><div class="title">Lucky Man</div><div class="time">3:14	</div></div>
+<div class="entry"><div class="artist">Steve Miller Band</div><div class="album">Sailor</div><div class="year">1968</div><div class="title">Gangster Of Love</div><div class="time">1:29	</div></div>
+<div class="entry"><div class="artist">Steve Miller Band</div><div class="album">Sailor</div><div class="year">1968</div><div class="title">You're So Fine</div><div class="time">2:51	</div></div>
+<div class="entry"><div class="artist">Steve Miller Band</div><div class="album">Sailor</div><div class="year">1968</div><div class="title">Overdrive</div><div class="time">3:52	</div></div>
+<div class="entry"><div class="artist">Steve Miller Band</div><div class="album">Sailor</div><div class="year">1968</div><div class="title">Dime-A-Dance Romance</div><div class="time">3:27	</div></div>
+<div class="entry"><div class="artist">The Nice</div><div class="album">The Nice - Greatest Hits</div><div class="year">1968</div><div class="title">America</div><div class="time">6:21	</div></div>
+<div class="entry"><div class="artist">Herbie Mann</div><div class="album">Memphis Underground</div><div class="year">1969</div><div class="title">New Orleans</div><div class="time">2:08	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Cry of Love</div><div class="year">1971</div><div class="title">Freedom</div><div class="time">3:28	</div></div>
+<div class="entry"><div class="artist">The Master's Apprentices</div><div class="album">Complete Recordings 1965 - 1968</div><div class="year">1967</div><div class="title">Dancing Girl</div><div class="time">4:32	</div></div>
+<div class="entry"><div class="artist">Lazy Smoke</div><div class="album">Corridor Of Faces</div><div class="year">1968</div><div class="title">Sarah Saturday</div><div class="time">2:49	</div></div>
+<div class="entry"><div class="artist">Quicksilver Messenger Service</div><div class="album">Quicksilver Messenger Service</div><div class="year">1968</div><div class="title">Dino's Song</div><div class="time">3:10	</div></div>
+<div class="entry"><div class="artist">Various Artists</div><div class="album">Television's Greatest Hits Of The '50s And '60s</div><div class="year">1986</div><div class="title">Happy Trails</div><div class="time">0:59	</div></div>
+
+</div>
+</div>
+
+<div class="playlist_contents" id="C07-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #7 Contents</span> <a href="#" onclick='hideMe("#C07-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[18]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">The Leaves (US)</div><div class="album">All The Good That's Happening</div><div class="year">1967</div><div class="title">Lemmon Princess</div><div class="time">2:03	</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">Magical Mystery Tour</div><div class="year">1967</div><div class="title">Magical Mystery Tour</div><div class="time">2:51	</div></div>
+<div class="entry"><div class="artist">It's a Beautiful Day</div><div class="album">It's a Beautiful Day</div><div class="year">1969</div><div class="title">Girl With No Eyes</div><div class="time">3:48	</div></div>
+<div class="entry"><div class="artist">Howlin' Wolf</div><div class="album">The Howlin' Wolf Album</div><div class="year">1969</div><div class="title">Tail Dragger</div><div class="time">4:32	</div></div>
+<div class="entry"><div class="artist">J.J.Cale</div><div class="album">Naturally</div><div class="year">1972</div><div class="title">Nowhere To Run</div><div class="time">2:28	</div></div>
+<div class="entry"><div class="artist">Ikarus</div><div class="album">Ikarus</div><div class="year">1971</div><div class="title">Eclipse</div><div class="time">15:25	</div></div>
+<div class="entry"><div class="artist">Ikarus</div><div class="album">Ikarus</div><div class="year">1971</div><div class="title">Mesentery</div><div class="time">6:12	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="album">Led Zeppelin II</div><div class="year">1969</div><div class="title">Moby Dick</div><div class="time">4:21	</div></div>
+<div class="entry"><div class="artist">Cressida</div><div class="album">Cressida (Remastered)</div><div class="year">2014</div><div class="title">Down Down (Remastered)</div><div class="time">4:17	</div></div>
+<div class="entry"><div class="artist">The Zodiac</div><div class="album">Cosmic Sounds</div><div class="year">1967</div><div class="title">1. Aries - The Fire-Fighter</div><div class="time">3:17	</div></div>
+<div class="entry"><div class="artist">Return To Forever Feat. Chick Corea</div><div class="album">Hymn Of The Seventh Galaxy</div><div class="year">1973</div><div class="title">Hymn Of The Seventh Galaxy</div><div class="time">3:32	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Band Of Gypsys</div><div class="year">1997</div><div class="title">We Gotta Live Together</div><div class="time">5:46	</div></div>
+<div class="entry"><div class="artist">Ultimate Spinach</div><div class="album">Ultimate Spinach</div><div class="year">1967</div><div class="title">SACRIFICE OF THE MOON</div><div class="time">3:46	</div></div>
+
+
+
+
+
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[19]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Grateful Dead</div><div class="album">The Best Of Skeletons From The Closet</div><div class="year">1974</div><div class="title">Casey Jones</div><div class="time">4:29	</div></div>
+<div class="entry"><div class="artist">The Koala</div><div class="album">The Koala</div><div class="year">1969</div><div class="title">Nothing's Changed</div><div class="time">4:22	</div></div>
+<div class="entry"><div class="artist">Orang-Utan</div><div class="album">Orang-Utan</div><div class="year">1971</div><div class="title">If You Leave</div><div class="time">5:26	</div></div>
+<div class="entry"><div class="artist">Janis Joplin</div><div class="album">I Got Dem Ol' Kozmic Blues Again Mama!</div><div class="year">1999</div><div class="title">As Good As You've Been To This World</div><div class="time">5:25	</div></div>
+<div class="entry"><div class="artist">Malcom Wright & Steve North</div><div class="album">First Philadelphia Computer Music Festival</div><div class="year">1978</div><div class="title">It's A Small World</div><div class="time">0:51	</div></div>
+<div class="entry"><div class="artist">Vanilla Fudge</div><div class="album">Vanilla Fudge</div><div class="year">2003</div><div class="title">a) Take Me For A Little While b) RYFI (Illusions Of My Childhood-Part Three) [LP Version]</div><div class="time">3:55	</div></div>
+<div class="entry"><div class="artist">The Cryan' Shames</div><div class="album">Sugar & Spice (A Collection)</div><div class="year">1968</div><div class="title">Greenburg, Glickstein, Charles, Smith & Jones</div><div class="time">2:18	</div></div>
+<div class="entry"><div class="artist">Gun</div><div class="album">Gunsight</div><div class="year">1969</div><div class="title">Lady Link Part 2</div><div class="time">0:39	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Wheels Of Fire (CD 1)</div><div class="year">1968</div><div class="title">Born Under a Bad Sign</div><div class="time">3:07	</div></div>
+<div class="entry"><div class="artist">Blind Faith</div><div class="album">20th Century Masters - The Millennium Collection: The Best of Steve Winwood</div><div class="year">1969</div><div class="title">Can't Find My Way Home</div><div class="time">3:17	</div></div>
+<div class="entry"><div class="artist">Sapphire Thinkers</div><div class="album">From Within</div><div class="year">2012</div><div class="title">From Within</div><div class="time">3:27	</div></div>
+<div class="entry"><div class="artist">The West Coast Pop Art Experimental Band</div><div class="album">Part One</div><div class="year">2006</div><div class="title">'Scuse Me Miss Rose (Album Version)</div><div class="time">3:03	</div></div>
+<div class="entry"><div class="artist">The Flock</div><div class="album">Unknown Album</div><div class="year">1969</div><div class="title">Lollipops And Rainbows</div><div class="time">4:06	</div></div>
+<div class="entry"><div class="artist">Neil Young</div><div class="album">After The Goldrush</div><div class="year">1970</div><div class="title">After The Gold Rush</div><div class="time">3:46	</div></div>
+<div class="entry"><div class="artist">Camel</div><div class="album">Mirage</div><div class="year">1974</div><div class="title">Freefall</div><div class="time">5:57	</div></div>
+
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[20]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry"><div class="artist">Moby Grape</div><div class="album">Moby Grape</div><div class="year">1967</div><div class="title">Hey Grandma</div><div class="time">2:33	</div></div>
+<div class="entry"><div class="artist">James Gang</div><div class="album">Rides Again</div><div class="year">1970</div><div class="title">There I Go Again</div><div class="time">2:49	</div></div>
+<div class="entry"><div class="artist">Killing Floor</div><div class="album">Killing Floor</div><div class="year">1969</div><div class="title">Nobody By My Side</div><div class="time">4:53	</div></div>
+<div class="entry"><div class="artist">The Humane Society</div><div class="album">Nuggets: Original Artyfacts From The First Psychedelic Era, Vol. 3</div><div class="year">1967</div><div class="title">Knock, Knock</div><div class="time">2:58	</div></div>
+<div class="entry"><div class="artist">The Aynsley Dunbar Retaliation</div><div class="album">The Aynsley Dunbar Retaliation</div><div class="year">1968</div><div class="title">Watch 'n' Chain</div><div class="time">2:36	</div></div>
+<div class="entry"><div class="artist">Iron Butterfly</div><div class="album">In-A-Gadda-Da-Vida</div><div class="year">1968</div><div class="title">In-A-Gadda-Da-Vida</div><div class="time">17:02	</div></div>
+<div class="entry"><div class="artist">Johnny Winter</div><div class="album">Second Winter (downloaded)</div><div class="year">1969</div><div class="title">The Good Love</div><div class="time">4:44	</div></div>
+<div class="entry"><div class="artist">Juicy Lucy</div><div class="album">Juicy Lucy</div><div class="year">1969</div><div class="title">Just One Time</div><div class="time">4:41	</div></div>
+<div class="entry"><div class="artist">Steppenwolf</div><div class="album">Gold (Disc 1)</div><div class="year">1968</div><div class="title">Magic Carpet Ride</div><div class="time">4:30	</div></div>
+<div class="entry"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #7</div><div class="year">2020</div><div class="title">c7-3 06 set</div><div class="time">0:16	</div></div>
+<div class="entry"><div class="artist">The Kinks</div><div class="album">The Kinks Are The Village Green Preservation Society</div><div class="year">1968</div><div class="title">Starstruck</div><div class="time">2:23	</div></div>
+<div class="entry"><div class="artist">Os Mutantes</div><div class="album">Os Mutantes</div><div class="year"></div><div class="title">Baby</div><div class="time">3:01	</div></div>
+<div class="entry"><div class="artist">King Crimson</div><div class="album">In The Court Of The Crimson King</div><div class="year">1969</div><div class="title">21st Century Schizoid Man Including Mirrors</div><div class="time">7:23	</div></div>
+<div class="entry"><div class="artist">Various Artists</div><div class="album">Television's Greatest Hits Of The '50s And '60s</div><div class="year">1986</div><div class="title">Happy Trails</div><div class="time">0:59	</div></div>
+
+</div>
+</div>
+
+<div class="playlist_contents" id="C08-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #8 Contents</span> <a href="#" onclick='hideMe("#C08-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[21]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Welcome</div><div class="time">0:49</div></div>
+<div class="entry"><div class="artist">Steve Miller Band</div><div class="album">Sailor</div><div class="year">1968</div><div class="title">Living In The USA</div><div class="time">4:04</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Axis: Bold As Love</div><div class="year">1967</div><div class="title">Little Wing</div><div class="time">2:27</div></div>
+<div class="entry"><div class="artist">Sweetwater</div><div class="album">Just For You</div><div class="year">1970</div><div class="title">Windlace</div><div class="time">4:37</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Set 2</div><div class="time">0:39</div></div>
+<div class="entry"><div class="artist">The Zodiac</div><div class="album">Cosmic Sounds</div><div class="year">1967</div><div class="title">3. Gemini - The Cool Eye</div><div class="time">2:52</div></div>
+<div class="entry xx"><div class="artist">youtube airchecks</div><div class="album">psychedelic radio commercials</div><div class="year">1968</div><div class="title">uncola ad</div><div class="time">0:25</div></div>
+<div class="entry"><div class="artist">H.P. Lovecraft</div><div class="album">H.P. Lovecraft I</div><div class="year">1967</div><div class="title">Country Boy & Bleaker Street</div><div class="time">2:43</div></div>
+<div class="entry"><div class="artist">Grateful Dead</div><div class="album">American Beauty</div><div class="year">1970</div><div class="title">Operator</div><div class="time">2:26</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Set 3 - Complete Side 1</div><div class="time">1:01</div></div>
+<div class="entry"><div class="artist">Jefferson Airplane</div><div class="album">Surrealistic Pillow</div><div class="year">1967</div><div class="title">She Has Funny Cars</div><div class="time">3:11</div></div>
+<div class="entry"><div class="artist">Jefferson Airplane</div><div class="album">Surrealistic Pillow</div><div class="year">1967</div><div class="title">Somebody To Love</div><div class="time">2:59</div></div>
+<div class="entry"><div class="artist">Jefferson Airplane</div><div class="album">Surrealistic Pillow</div><div class="year">1967</div><div class="title">My Best Friend</div><div class="time">3:01</div></div>
+<div class="entry"><div class="artist">Jefferson Airplane</div><div class="album">Surrealistic Pillow</div><div class="year">1967</div><div class="title">Today</div><div class="time">3:00</div></div>
+<div class="entry"><div class="artist">Jefferson Airplane</div><div class="album">Surrealistic Pillow</div><div class="year">1967</div><div class="title">Comin' Back To Me</div><div class="time">5:18</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Set 4</div><div class="time">0:40</div></div>
+<div class="entry"><div class="artist">Blood, Sweat & Tears</div><div class="album">Child Is Father To The Man</div><div class="year">1968</div><div class="title">I Love You More Than You'll Ever Know</div><div class="time">5:57</div></div>
+<div class="entry"><div class="artist">Radio Broadcasts</div><div class="album">Triad Radio - 8-17-71</div><div class="year">1971</div><div class="title">Triad 72-6 Ad (surreal clothing ad)</div><div class="time">0:34</div></div>
+<div class="entry"><div class="artist">Harvey Mandel</div><div class="album">The Snake</div><div class="year"></div><div class="title">Levitation</div><div class="time">5:12</div></div>
+<div class="entry"><div class="artist">The Moody Blues</div><div class="album">In Search Of The Lost Chord</div><div class="year">1968</div><div class="title">The Best Way To Travel</div><div class="time">3:14</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Set 5</div><div class="time">0:28</div></div>
+<div class="entry"><div class="artist">The Byrds</div><div class="album">Fifth Dimension</div><div class="year">1966</div><div class="title">I See You</div><div class="time">2:43</div></div>
+<div class="entry"><div class="artist">Canned Heat</div><div class="album">Hallelujah</div><div class="year">1968</div><div class="title">Do Not Enter (1968)</div><div class="time">2:52</div></div>
+<div class="entry"><div class="artist">Jethro Tull</div><div class="album">Benefit [Bonus Tracks]</div><div class="year">1970</div><div class="title">Son</div><div class="time">2:51</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Set 6 - Part 1 Wrap-Up</div><div class="time">0:28</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">The Cream Of Clapton</div><div class="year">1969</div><div class="title">Badge</div><div class="time">2:47</div></div>
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[22]); return false;"><img src="play_small.png"/></a></div></div>
+
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 2 Set 1</div><div class="time">0:31</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="album">Led Zeppelin II</div><div class="year">1969</div><div class="title">Ramble On</div><div class="time">4:24</div></div>
+<div class="entry xx"><div class="artist"></div><div class="album">SoundBible.com Sound Effects</div><div class="year"></div><div class="title">radiocheck-Henk_-858750906</div><div class="time">0:13</div></div>
+<div class="entry"><div class="artist">Muddy Waters</div><div class="album">After the Rain</div><div class="year">1969</div><div class="title">Ramblin' Mind</div><div class="time">4:43</div></div>
+<div class="entry"><div class="artist">Majic Ship</div><div class="album">Majic Ship</div><div class="year">1969</div><div class="title">We Gotta Live On</div><div class="time">3:13</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 2 Set 2</div><div class="time">0:50</div></div>
+<div class="entry xx"><div class="artist">Six String Mark</div><div class="album">Vinyl Vortex Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 2 Set 3 - Done to My Song</div><div class="time">0:08</div></div>
+<div class="entry xx"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 2 Set 3</div><div class="time">0:26</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">The Beatles 1967-1970 (The Blue Album)</div><div class="year">1968</div><div class="title">Revolution</div><div class="time">3:23</div></div>
+<div class="entry"><div class="artist">The Head Shop</div><div class="album">The Head Shop</div><div class="year">1969</div><div class="title">Revolution</div><div class="time">2:31</div></div>
+<div class="entry"><div class="artist">Big Jim Sullivan</div><div class="album">Sitar Beat</div><div class="year">1968</div><div class="title">She's Leaving Home</div><div class="time">2:37</div></div>
+<div class="entry"><div class="artist">The Firesign Theater</div><div class="album">Waiting For The Electrician Or Someone Like Him</div><div class="year">2008</div><div class="title">The Mantras And The Shakras</div><div class="time">4:08</div></div>
+<div class="entry"><div class="artist">Pink Floyd</div><div class="album">Dark Side Of The Moon</div><div class="year">1973</div><div class="title">Time</div><div class="time">7:06</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 2 Set 4</div><div class="time">0:58</div></div>
+<div class="entry"><div class="artist">Leslie West</div><div class="album">Mountain</div><div class="year">1996</div><div class="title">Dreams Of Milk & Honey</div><div class="time">3:34</div></div>
+<div class="entry"><div class="artist">Walter Carlos</div><div class="album">Switched-On Bach</div><div class="year">1973</div><div class="title">Bach: 2-Part Invention In D Minor</div><div class="time">0:52</div></div>
+<div class="entry"><div class="artist">Graffiti</div><div class="album">Graffiti</div><div class="year">1968</div><div class="title">Father Protector</div><div class="time">4:16</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 2 Set 5</div><div class="time">0:40</div></div>
+<div class="entry"><div class="artist">Ten Years After</div><div class="album">Ssssh</div><div class="year">1969</div><div class="title">Good Morning Little Schoolgirl</div><div class="time">7:13</div></div>
+<div class="entry"><div class="artist">Frijid Pink</div><div class="album">Frijid Pink</div><div class="year">1970</div><div class="title">I'm On My Way</div><div class="time">4:35</div></div>
+<div class="entry"><div class="artist">Herbie Mann</div><div class="album">Memphis Underground</div><div class="year">1969</div><div class="title">Memphis Underground</div><div class="time">7:09</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 2 Set 6</div><div class="time">0:40</div></div>
+<div class="entry"><div class="artist">Nick Drake</div><div class="album">Five Leaves Left</div><div class="year">1969</div><div class="title">The Thousand Thoughts Of Mary Jane</div><div class="time">3:22</div></div>
+<div class="entry"><div class="artist">The Chocolate Watchband</div><div class="album">Nuggets: Original Artyfacts From The First Psychedelic Era, Vol. 4</div><div class="year">1967</div><div class="title">Are You Gonna Be There (At The Love In)</div><div class="time">2:27</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 2 Wrap-Up</div><div class="time">0:21</div></div>
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[23]); return false;"><img src="play_small.png"/></a></div></div>
+
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 3 - Set 1</div><div class="time">0:25</div></div>
+<div class="entry"><div class="artist">The Beatles</div><div class="album">Abbey Road</div><div class="year">1969</div><div class="title">Come Together</div><div class="time">4:21</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Are You Experienced?</div><div class="year">1967</div><div class="title">May This Be Love</div><div class="time">3:10</div></div>
+<div class="entry"><div class="artist">The Kinks</div><div class="album">The Kinks Are The Village Green Preservation Society</div><div class="year">1968</div><div class="title">Do You Remember Walter?</div><div class="time">2:28</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 3 - Set 2</div><div class="time">0:29</div></div>
+<div class="entry"><div class="artist">The Temptations</div><div class="album">Greatest Hits</div><div class="year">1970</div><div class="title">Ball Of Confusion</div><div class="time">4:08</div></div>
+<div class="entry xx"><div class="artist">KJR with Pat O'Day</div><div class="album">KJR Aircheck</div><div class="year">1967</div><div class="title">(KJR) 1967 (short) seattle psychedelic concert plug - jefferson airplane, byrds, electric prunes, etc</div><div class="time">0:23</div></div>
+<div class="entry"><div class="artist">Arthur Brown's Kingdom Come</div><div class="album">Galactic Zoo Dossier</div><div class="year">1971</div><div class="title">Brains</div><div class="time">0:54</div></div>
+<div class="entry"><div class="artist">Santana</div><div class="album">Santana: The Woodstock Experience</div><div class="year">1969</div><div class="title">Evil Ways</div><div class="time">4:01</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 3 - Set 3 - Freak Out Side 2</div><div class="time">1:08</div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers Of Invention</div><div class="album">Freak Out!</div><div class="year">1966</div><div class="title">Wowie Zowie</div><div class="time">2:53</div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers Of Invention</div><div class="album">Freak Out!</div><div class="year">1966</div><div class="title">You Didn't Try To Call Me</div><div class="time">3:19</div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers Of Invention</div><div class="album">Freak Out!</div><div class="year">1966</div><div class="title">Any Way The Wind Blows</div><div class="time">2:56</div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers Of Invention</div><div class="album">Freak Out!</div><div class="year">1966</div><div class="title">I'm Not Satisfied</div><div class="time">2:39</div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers Of Invention</div><div class="album">Freak Out!</div><div class="year">1966</div><div class="title">You're Probably Wondering Why I'm Here</div><div class="time">3:38</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 3 - Set 4</div><div class="time">0:31</div></div>
+<div class="entry"><div class="artist">Big Brother & The Holding Company</div><div class="album">Cheap Thrills</div><div class="year">1968</div><div class="title">Combination Of The Two</div><div class="time">5:48</div></div>
+<div class="entry xx"><div class="artist">Celebrity Commercials</div><div class="album">Celebrity Commercials Of The '50s & '60s</div><div class="year">2010</div><div class="title">Ban - Iron Butterfly - Personal Hygiene 2 - short</div><div class="time">0:21</div></div>
+<div class="entry"><div class="artist">Sandy Denny & The Strawbs</div><div class="album">All Our Own Work</div><div class="year">1967</div><div class="title">Stay Awhile With Me</div><div class="time">2:24</div></div>
+<div class="entry"><div class="artist">Cactus</div><div class="album">Cactus</div><div class="year">1970</div><div class="title">You Can't Judge a Book By the Cover</div><div class="time">6:30</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 3 - Set 5</div><div class="time">0:42</div></div>
+<div class="entry"><div class="artist">Vanilla Fudge</div><div class="album">Renaissance</div><div class="year">1968</div><div class="title">Thoughts</div><div class="time">3:34</div></div>
+<div class="entry"><div class="artist">Paul Horn</div><div class="album">Inside the Taj Mahal I & II</div><div class="year">2001</div><div class="title">Agra</div><div class="time">1:40</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 3 - Set 6</div><div class="time">0:25</div></div>
+<div class="entry"><div class="artist">Illinois Speed Press</div><div class="album">The Illinois Speed Press</div><div class="year">1969</div><div class="title">Hard Luck Story</div><div class="time">4:43</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">A Gift From A Flower To A Garden</div><div class="year">1967</div><div class="title">The Land Of Doesn't Have To Be</div><div class="time">2:28</div></div>
+<div class="entry"><div class="artist">Steppenwolf</div><div class="album">Gold (Gold 2)</div><div class="year">1970</div><div class="title">Hey Lawdy Mama</div><div class="time">2:56</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #8</div><div class="year">2021</div><div class="title">Show #8 Part 3 Wrap-Up - Sign-Off</div><div class="time">0:53</div></div>
+<div class="entry"><div class="artist">Various Artists</div><div class="album">Television's Greatest Hits Of The '50s And '60s</div><div class="year">1986</div><div class="title">Happy Trails</div><div class="time">0:59</div></div>
+
+</div>
+</div>
+
+
+<div class="playlist_contents" id="C09-1" style="display:none;">
+
+<div class="contents_closer"> <span>Show #9 Contents</span> <a href="#" onclick='hideMe("#C09-1")'>Close</a></div>
+
+<div class="xplaylist">
+
+<div class="entry part"><div class="part_name">Part 1 <a href="#" onclick="api_inputAudio(hap_players[0],mct[24]); return false;"><img src="play_small.png"/></a></div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Part 1 Welcome</div></div>
+<div class="entry"><div class="artist">Jethro Tull</div><div class="album">Stand Up</div><div class="year">1969</div><div class="title">For A Thousand Mothers</div><div class="time">4:22	</div></div>
+<div class="entry"><div class="artist">Cream</div><div class="album">Disraeli Gears</div><div class="year">1967</div><div class="title">Tales Of Brave Ulysses</div><div class="time">2:50	</div></div>
+<div class="entry"><div class="artist">Glenn Gould</div><div class="album">The Complete Goldberg Variations 1955 And 1981 (Disc 1)</div><div class="year">1955</div><div class="title">BWV 988 (1955 recording) Variatio I A 1 Clavier</div><div class="time">0:45	</div></div>
+<div class="entry"><div class="artist">Richie Havens</div><div class="album">Richard P. Havens, 1983</div><div class="year">1969</div><div class="title">Indian Rope Man</div><div class="time">3:05	</div></div>
+<div class="entry"><div class="artist">Johnny Winter</div><div class="album">The Progressive Blues Experiment</div><div class="year">1969</div><div class="title">Help Me</div><div class="time">3:50	</div></div>
+<div class="entry"><div class="artist">The Bonzo Dog Doo-Dah Band</div><div class="album">Gorilla</div><div class="year">1967</div><div class="title">Narcissus</div><div class="time">0:27	</div></div>
+<div class="entry"><div class="artist">Touch</div><div class="album">Touch</div><div class="year">1969</div><div class="title">Miss Teach</div><div class="time">3:30	</div></div>
+<div class="entry"><div class="artist">Harvey Mandel</div><div class="album">The Snake</div><div class="year"></div><div class="title">The Divining Rod</div><div class="time">3:02	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Bubble Puppy Side 1</div><div class="time">1:06	</div></div>
+<div class="entry"><div class="artist">Bubble Puppy</div><div class="album">The Bubble Puppy Selected Favorites</div><div class="year">2006</div><div class="title">Hot Smoke And Sasafrass</div><div class="time">2:36	</div></div>
+<div class="entry"><div class="artist">Bubble Puppy</div><div class="album">The Bubble Puppy Selected Favorites</div><div class="year">2006</div><div class="title">Todd's Tune</div><div class="time">3:13	</div></div>
+<div class="entry"><div class="artist">Bubble Puppy</div><div class="album">The Bubble Puppy Selected Favorites</div><div class="year">2006</div><div class="title">I've Got To Reach You</div><div class="time">7:51	</div></div>
+<div class="entry"><div class="artist">Bubble Puppy</div><div class="album">The Bubble Puppy Selected Favorites</div><div class="year">2006</div><div class="title">Lonely</div><div class="time">2:55	</div></div>
+<div class="entry"><div class="artist">Bubble Puppy</div><div class="album">The Bubble Puppy Selected Favorites</div><div class="year">2006</div><div class="title">A Gathering Of Promises</div><div class="time">2:25	</div></div>
+<div class="entry xx"><div class="artist">youtube airchecks</div><div class="album">psychedelic radio commercials</div><div class="year">1968</div><div class="title">Hal's Records ad</div><div class="time">0:35	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Set</div></div>
+<div class="entry"><div class="artist">Jeff Beck</div><div class="album">Truth</div><div class="year">1967</div><div class="title">I Ain't Superstitious</div><div class="time">4:52	</div></div>
+<div class="entry"><div class="artist">Arlo Guthrie</div><div class="album">Hobo's Lullaby (Remastered 2004)</div><div class="year">1972</div><div class="title">Hobo's Lullaby</div><div class="time">3:58	</div></div>
+<div class="entry"><div class="artist">It's a Beautiful Day</div><div class="album">It's a Beautiful Day</div><div class="year">1969</div><div class="title">Bombay Calling</div><div class="time">4:31	</div></div>
+<div class="entry"><div class="artist">Frank Zappa & The Mothers</div><div class="album">We're Only In It For The Money/Lumpy Gravy</div><div class="year">1986</div><div class="title">What's The Ugliest Part Of Your Body</div><div class="time">1:03	</div></div>
+<div class="entry"><div class="artist">Led Zeppelin</div><div class="album">Led Zeppelin II</div><div class="year">1969</div><div class="title">What Is And What Should Never Be</div><div class="time">4:46	</div></div>
+
+<div class="entry part"><div class="part_name">Part 2 <a href="#" onclick="api_inputAudio(hap_players[0],mct[25]); return false;"><img src="play_small.png"/></a></div></div>
+
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Part 2 Welcome</div></div>
+<div class="entry"><div class="artist">Blue Cheer</div><div class="album">Vincebus Eruptum</div><div class="year">1968</div><div class="title">Summertime Blues</div><div class="time">3:48	</div></div>
+<div class="entry"><div class="artist">H.P. Lovecraft</div><div class="album">H.P. Lovecraft I</div><div class="year">1967</div><div class="title">Gloria Patria</div><div class="time">0:32	</div></div>
+<div class="entry"><div class="artist">Buffalo Springfield</div><div class="album">Iconic Performances from the Monterey International Pop Festival</div><div class="year">1967</div><div class="title">For What It's Worth</div><div class="time">2:51	</div></div>
+<div class="entry"><div class="artist">Iron Butterfly</div><div class="album">Heavy</div><div class="year">1968</div><div class="title">Unconscious Power</div><div class="time">2:30	</div></div>
+<div class="entry xx"><div class="artist">youtube airchecks</div><div class="album">psychedelic radio commercials</div><div class="year">1968</div><div class="title">monterey pop ad</div><div class="time">0:35	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Look What They've Done to My Song</div><div class="time">0:20	</div></div>
+<div class="entry"><div class="artist">Bo Diddley</div><div class="album">The Chess Blues-Rock Songbook [Disc 2]</div><div class="year">1957</div><div class="title">Mona</div><div class="time">2:24	</div></div>
+<div class="entry"><div class="artist">Quicksilver Messenger Service</div><div class="album">Happy Trails</div><div class="year">1969</div><div class="title">Mona</div><div class="time">7:01	</div></div>
+<div class="entry xx"><div class="artist">youtube airchecks</div><div class="album">psychedelic radio commercials</div><div class="year">1968</div><div class="title">vox wah wah ad</div><div class="time">0:34	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Set</div><div class="time">0:24	</div></div>
+<div class="entry"><div class="artist">Jimi Hendrix</div><div class="album">Electric Ladyland</div><div class="year">1968</div><div class="title">Crosstown Traffic</div><div class="time">2:26	</div></div>
+<div class="entry"><div class="artist">The Electric Flag</div><div class="album">Groovin' Is Easy</div><div class="year"></div><div class="title">Spotlight</div><div class="time">3:48	</div></div>
+<div class="entry"><div class="artist">Jefferson Airplane</div><div class="album">After Bathing At Baxter's</div><div class="year">1967</div><div class="title">A Small Package Of Value Will Come To You Shortly</div><div class="time">1:40	</div></div>
+<div class="entry"><div class="artist">Fat Mattress</div><div class="album">Fat Mattress</div><div class="year">2009</div><div class="title">Walking Through a Garden</div><div class="time">3:27	</div></div>
+<div class="entry"><div class="artist">Blind Faith</div><div class="album">The Cream Of Clapton</div><div class="year">1969</div><div class="title">Presence Of The Lord</div><div class="time">4:50	</div></div>
+<div class="entry"><div class="artist">Cryan' Shames</div><div class="album">Synthesis</div><div class="year">2014</div><div class="title">The Painter</div><div class="time">2:52	</div></div>
+<div class="entry"><div class="artist">Tomita</div><div class="album">Greatest Hits CD</div><div class="year"></div><div class="title">Golliwog's Cakewalk</div><div class="time">2:55	</div></div>
+<div class="entry"><div class="artist">Mountain</div><div class="album">Nantucket Sleighride [Bonus Track]</div><div class="year">2003</div><div class="title">You Can't Get Away!</div><div class="time">3:28	</div></div>
+<div class="entry"><div class="artist">The Zodiac</div><div class="album">Cosmic Sounds</div><div class="year">1967</div><div class="title">2. Taurus - The Voluptuary</div><div class="time">3:42	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Last Set</div><div class="time">0:25	</div></div>
+<div class="entry"><div class="artist">Eric Burdon & The Animals</div><div class="album">Nights in San Francisco</div><div class="year">1967</div><div class="title">Paint It Black</div><div class="time">2:49	</div></div>
+<div class="entry"><div class="artist">Steve Miller Band</div><div class="album">Sailor</div><div class="year">1968</div><div class="title">Dear Mary</div><div class="time">3:35	</div></div>
+<div class="entry"><div class="artist">Rahsaan Roland Kirk</div><div class="album">Jazz Mix - 2/12/3</div><div class="year"></div><div class="title">Serenade to a Cuckoo / Rahsaan Roland Kirk</div><div class="time">3:40	</div></div>
+
+<div class="entry part"><div class="part_name">Part 3 <a href="#" onclick="api_inputAudio(hap_players[0],mct[26]); return false;"><img src="play_small.png"/></a></div></div>
+
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Part 3 Welcome</div><div class="time">0:27	</div></div>
+<div class="entry"><div class="artist">The Byrds</div><div class="album">Fifth Dimension</div><div class="year">1966</div><div class="title">Eight Miles High</div><div class="time">3:40	</div></div>
+<div class="entry"><div class="artist">Gong</div><div class="album">Camembert Electrique</div><div class="year">1971</div><div class="title">Radio Gnome</div><div class="time">0:28	</div></div>
+<div class="entry"><div class="artist">J.J.Cale</div><div class="album">Naturally</div><div class="year">1972</div><div class="title">Woman I Love</div><div class="time">2:39	</div></div>
+<div class="entry"><div class="artist">Spirit</div><div class="album">The Family That Plays Together</div><div class="year">1968</div><div class="title">It Shall Be</div><div class="time">3:25	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Sunshine Superman Side 2</div><div class="time">1:04	</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">Sunshine Superman</div><div class="year">1966</div><div class="title">Season Of The Witch</div><div class="time">4:59	</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">Sunshine Superman</div><div class="year">1966</div><div class="title">The Trip</div><div class="time">4:39	</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">Sunshine Superman</div><div class="year">1966</div><div class="title">Guinevere</div><div class="time">3:46	</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">Sunshine Superman</div><div class="year">1966</div><div class="title">The Fat Angel</div><div class="time">4:16	</div></div>
+<div class="entry"><div class="artist">Donovan</div><div class="album">Sunshine Superman</div><div class="year">1966</div><div class="title">Celeste</div><div class="time">4:09	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Set</div><div class="time">0:37	</div></div>
+<div class="entry"><div class="artist">Bloomfield, Kooper, Stills</div><div class="album">Super Session (Live At The Fillmore East)</div><div class="year">1968</div><div class="title">You Don't Love Me (Live)</div><div class="time">4:10	</div></div>
+<div class="entry"><div class="artist">Foxx</div><div class="album">The Revolt of Emily Young (Psychedelic Essentials)</div><div class="year">1970</div><div class="title">Rebecca's Prayer</div><div class="time">2:15	</div></div>
+<div class="entry"><div class="artist">Howard Roberts</div><div class="album">Antelope Freeway</div><div class="year">1971</div><div class="title">Sixteen Track Firemen</div><div class="time">2:15	</div></div>
+<div class="entry"><div class="artist">Harry Nilsson</div><div class="album">Aerial Ballet</div><div class="year">1968</div><div class="title">Little Cowboy</div><div class="time">0:51	</div></div>
+<div class="entry"><div class="artist">Fuse</div><div class="album">Fuse</div><div class="year">1970</div><div class="title">Mystery Ship</div><div class="time">3:24	</div></div>
+<div class="entry xx"><div class="artist">youtube airchecks</div><div class="album">psychedelic radio commercials</div><div class="year">1968</div><div class="title">wild in the streets ad</div><div class="time">0:38	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Last Set</div><div class="time">0:16	</div></div>
+<div class="entry"><div class="artist">The Moody Blues</div><div class="album">In Search Of The Lost Chord</div><div class="year">1968</div><div class="title">House Of Four Doors</div><div class="time">4:12	</div></div>
+<div class="entry"><div class="artist">Tommy Bolin</div><div class="album">Teaser</div><div class="year">1975</div><div class="title">Lotus</div><div class="time">3:52	</div></div>
+<div class="entry"><div class="artist">Moondog</div><div class="album">Moondog</div><div class="year">1956</div><div class="title">Tree Trail</div><div class="time">2:15	</div></div>
+<div class="entry"><div class="artist">The Doors</div><div class="album">Morrison Hotel</div><div class="year">1970</div><div class="title">Waiting For The Sun</div><div class="time">4:00	</div></div>
+<div class="entry xx ss"><div class="artist">Six String Mark</div><div class="album">Psychedelic Cellar Show #9</div><div class="year">2023</div><div class="title">Sign-Off</div><div class="time">1:17	</div></div>
+<div class="entry"><div class="artist">Classical</div><div class="album">Ravel: Daphnis et Chloe Suite, Stravinsky Petrouchka & Firebird</div><div class="year"></div><div class="title">Stravinsky Firebird Suite: Finale</div><div class="time">2:59	</div></div>
+
+
+</div>
+</div>
+
+
+
+				</li>
+
+
+
+
+				</ul>
+
+		</div><!-- details -->
+		</div><!-- wrapper -->
+	</div><!-- #container -->
+        <!-- player code -->
+
+        <!-- PLAYLIST LIST -->
+        <div id="playlist_list" style="display:none;">
+
+             <!-- local playlist -->
+             <ul id='playlist1'>
+                 <li class= 'playlistItem' data-type='local' data-mp3='http://www.mckenzieduo.com/sounds/vinyl-vortex-oldies-show-primer.mp3'
+                 ><a class='playlistNonSelected' href='#'>The Vinyl Vortex Psychedelic Cellar</a></li>
+             </ul>
+
+
+
+        </div>
+
+</body>
+<script>
+var supportsM3u = false;
+var myAudio = document.createElement('audio');
+if (myAudio.canPlayType('audio/mpegurl') !== ""){supportsM3u = true;}
+if( supportsM3u ) {
+//	$('.m3ulink').toggle();
+}
+</script>
+</html>
